@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
-export const Client = ({ client }) => {
-    return (
+export const Client = ({ client, navigation}) => {
+    return(
         <View style={styles.client}>
-            <Text style={styles.text}> 
-                { client.surnamename + ' ' + client.name }
+            <Text style={styles.text} onPress={() => navigation.navigate('Info', {client: client})}>
+                { client.surname + ' ' + client.name }
             </Text>
         </View>
     )
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
       marginTop: 5,
       width: '100%'
     },
-    text: {
+    text:{
         fontSize: 20,
         color: 'black',
     }

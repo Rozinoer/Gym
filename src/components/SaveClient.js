@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button} from 'react-native';
+import { StyleSheet, View, Button} from 'react-native';
 
-export const SaveClient = ({ onSubmit }) => {
+export const SaveClient = ({ onSubmit, value, navigation}) => {
     const presHandler = () => {
-        onSubmit()   
+        onSubmit(value)
+        navigation.navigate('Main')
     }
 
     return (

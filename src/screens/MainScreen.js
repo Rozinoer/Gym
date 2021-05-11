@@ -1,14 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Button, StyleSheet, View } from 'react-native';
 import { Client } from '../components/Client'
-import { AddClient } from '../components/AddClient'
 
 export const MainScreen = ({ clients, navigation}) => {
     return (
         <View>
         <View style={styles.clients}>
           { clients.map(client => {
-            return <Client  key={client.id} client={client}/>
+            return <Client  key={client.id} client={client} navigation={navigation}/>
           })
           }
         </View>

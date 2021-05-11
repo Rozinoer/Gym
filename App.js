@@ -1,13 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import { Navbar } from './src/components/Navbar'
 import { MainScreen } from './src/screens/MainScreen'
 import { AddNewClient } from './src/screens/AddNewClient'
-
+import { AboutClient } from './src/screens/AboutClient';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { add } from 'react-native-reanimated';
+import { ClientProgress } from './src/screens/ClientProgress';
+import { ClientEx } from './src/screens/ClientEx';
 
 export default function App() {
   const [clients, setClients] = useState([])
@@ -15,12 +15,12 @@ export default function App() {
   const addClient = (client) => {
     setClients((prevClients) => [ ...prevClients, {
       id: Date.now().toString(),
-      surnamename: 'Amosov',
-      name: 'Jack',
+      surname: client.surname,
+      name: client.name,
       patronymic: 'Alexseevich',
       height: 187,
       weight: 72,
-      bd: '04.04.00'
+      bd: client.data
     }])
   }
 
@@ -35,13 +35,17 @@ export default function App() {
         <Stack.Screen name='Add' >
           {props => <AddNewClient { ...props } addClient={addClient} />}
         </Stack.Screen>
+        <Stack.Screen name='Info'>
+          {props => <AboutClient {...props} />}
+        </Stack.Screen>
+        <Stack.Screen name='Progress'>
+          {props => <ClientProgress {...props} />}
+        </Stack.Screen>
+        <Stack.Screen name='Ex'>
+          {props => <ClientEx {...props} />}
+        </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
-    // <View >
-    //   <Navbar />
-    //   <MainScreen clients={ clients }/>
-    //   {/* <AddNewClient clients={ clients } addClient={ addClient }/> */}
-    // </View>
   );
 }
 
