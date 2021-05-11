@@ -1,13 +1,13 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, Pressable, StyleSheet, Text, View } from 'react-native';
 
 export const Client = ({ client, navigation}) => {
     return(
-        <View style={styles.client}>
-            <Text style={styles.text} onPress={() => navigation.navigate('Info', {client: client})}>
+        <Pressable style={styles.client} onPress={() => navigation.navigate('Info', {client: client})}>
+            <Text style={styles.text}>
                 { client.surname + ' ' + client.name }
             </Text>
-        </View>
+        </Pressable>
     )
 }
 

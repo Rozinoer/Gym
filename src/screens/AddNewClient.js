@@ -72,7 +72,7 @@ export const AddNewClient = ({addClient, navigation}) => {
                 placeholder='phone'
                 onChangeText={(text) =>{
                     if (text)
-                        state.phone
+                        state.phone = text
                     }}
                 ></TextInput>
             </View>

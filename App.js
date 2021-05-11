@@ -17,10 +17,11 @@ export default function App() {
       id: Date.now().toString(),
       surname: client.surname,
       name: client.name,
-      patronymic: 'Alexseevich',
-      height: 187,
-      weight: 72,
-      bd: client.data
+      height: client.height,
+      weight: client.weight,
+      bd: client.data,
+      phone: client.phone,
+      ex: []
     }])
   }
 

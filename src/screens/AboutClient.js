@@ -7,10 +7,16 @@ export const AboutClient = (({route, navigation}) => {
 
     return(
         <View>
-            <ClientNavbar navigation={ navigation } />
+            <ClientNavbar client={client} navigation={ navigation } />
             <View style={styles.container}>
-                <Text style={styles.text}>{client.name}</Text>
-                <Text style={styles.text}>{client.surname}</Text>
+                <View style={styles.container}>
+                    <Text style={styles.mainText}>{client.name}</Text>
+                    <Text style={styles.mainText}>{client.surname}</Text>
+                    <Text style={styles.mainText}>{client.phone}</Text>
+                </View>
+                <View style={styles.button}>
+                    <Button title = 'Редактировать' color = 'white' />
+                 </View>
             </View>
         </View>
     )
@@ -20,13 +26,18 @@ const styles = StyleSheet.create({
     container: {
         padding: 10,
     },
-    text: {
+    mainText: {
         fontSize: 36,
-        // marginBottom: 5,
-        borderBottomWidth: 1,
-        // borderStyle: 'solid'
     },
-    input: {
-        borderBottomWidth: 1
+    text: {
+        fontSize: 20,
+    },
+    button: {
+        marginTop: 10,
+        marginBottom: 10,
+        borderWidth: 1,
+        borderRadius: 5,
+        width: '100%',
+        backgroundColor: 'black',
     }
 })

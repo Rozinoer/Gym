@@ -1,12 +1,11 @@
 import React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
-export const ClientNavbar = ({ navigation }) => {
+export const ClientNavbar = ({ client, navigation }) => {
     return (
         <View style={styles.navbar}>
-            {/* <Button title='info' onPress={() => navigation.navigate('Info', {client: client})}></Button> */}
             <Button title='progress' onPress={() => navigation.navigate('Progress')}></Button>
-            <Button title='ex' onPress={() => navigation.navigate('Ex')}></Button>
+            <Button title='ex' onPress={() => navigation.navigate('Ex', {client: client})}></Button>
         </View>
     )
 }
