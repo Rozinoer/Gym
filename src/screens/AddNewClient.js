@@ -9,7 +9,7 @@ export const AddNewClient = ({addClient, navigation}) => {
         height: '',
         weight: '',
         data: '',
-        phone: ''
+        phone: 'unavable'
     }
 
     return (

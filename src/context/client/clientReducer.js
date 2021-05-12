@@ -14,18 +14,19 @@ export const clientReducer = (state, action) => {
                 ex: []
             }]}
         case UPDATE_CLIENT: 
-        return {...state, clients: [...state.clients.map(
-            client => {
-                if (client.id === action.id) {
-                    client.surname = action.surname
-                    client.name = action.name
-                    client.height = action.height
-                    client.weight = action.weight
-                    client.bd = action.bd
-                    client.phone = action.phone
+            return {...state, clients: [...state.clients.map(
+                client => {
+                    if (client.id === action.client.id) {
+                        client.surname = action.client.surname
+                        client.name = action.client.name
+                        client.height = action.client.height
+                        client.weight = action.client.weight
+                        client.bd = action.client.bd
+                        client.phone = action.client.phone
+                    }
+                    return client
                 }
-            }
-        )]}
+            )]}
         case REMOVE_CLIENT: 
             return {...state, clients: [...state.clients.filter(
                 client => client.id !== action.id

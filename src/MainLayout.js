@@ -6,11 +6,10 @@ import { AddNewClient } from './screens/AddNewClient'
 import { AboutClient } from './screens/AboutClient';
 import { ClientProgress } from './screens/ClientProgress';
 import { ClientEx } from './screens/ClientEx';
-import { ClientState } from './context/client/ClientState';
 import { ClientContext } from './context/client/clientContext';
 
 export const MainLayout = () => {
-    const {clients, addClient} = useContext(ClientContext)
+    const {clients, addClient, editClient} = useContext(ClientContext)
     const Stack = createStackNavigator();
 
     return <NavigationContainer>
@@ -22,7 +21,7 @@ export const MainLayout = () => {
                     {props => <AddNewClient { ...props } addClient={addClient} />}
                 </Stack.Screen>
                 <Stack.Screen name='Info'>
-                    {props => <AboutClient {...props} />}
+                    {props => <AboutClient {...props} editClient={editClient} />}
                 </Stack.Screen>
                 <Stack.Screen name='Progress'>
                     {props => <ClientProgress {...props} />}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, StyleSheet, View } from 'react-native';
+import { Button, StyleSheet, View, Text} from 'react-native';
 import { Client } from '../components/Client'
 
 export const MainScreen = ({ clients, navigation}) => {
@@ -7,7 +7,7 @@ export const MainScreen = ({ clients, navigation}) => {
         <View>
         <View style={styles.clients}>
           { clients.map(client => {
-            return <Client  key={client.id} client={client} navigation={navigation}/>
+            return <Client key={client.id} client={client} navigation={navigation}/>
           })
           }
         </View>

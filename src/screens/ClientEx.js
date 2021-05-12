@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { Button, StyleSheet, View, Modal, Text, Pressable, TextInput} from 'react-native';
-import { set } from 'react-native-reanimated';
-import { ReloadInstructions } from 'react-native/Libraries/NewAppScreen';
 
 export const ClientEx = (({ route, navigation}) => {
     let state = {
