@@ -14,7 +14,7 @@ export const MainLayout = () => {
 
     return <NavigationContainer>
             <Stack.Navigator initialRouteName='Main'>
-                <Stack.Screen name='Main' >
+                <Stack.Screen name='Main'>
                     {props => <MainScreen { ...props } clients={clients} />}
                 </Stack.Screen>
                 <Stack.Screen name='Add' >
@@ -32,3 +32,4 @@ export const MainLayout = () => {
             </Stack.Navigator>
         </NavigationContainer>
 }
+
