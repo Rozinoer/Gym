@@ -36,7 +36,8 @@ const styles = StyleSheet.create({
       padding: 0,
       width: '100%',
       height: '100%',
-      backgroundColor: '#FFC040'
+      // backgroundColor: '#FFC040'
+      backgroundColor: '#c4c4c4'
     },
     
    
@@ -55,8 +56,10 @@ const styles = StyleSheet.create({
       width: 120,
       height: 120,
       borderRadius: 3,
-      backgroundColor: '#216Fd1',
+      backgroundColor: '#292929',
       boxShadow: '0 2px 4px #210672'
+      // backgroundColor: '#216Fd1',
+      // boxShadow: '0 2px 4px #210672'
       
 
     },

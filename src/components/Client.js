@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
       height: 110,
       justifyContent: 'flex-start',
       alignItems: 'center',
-      backgroundColor: '#123EAB',
+      // backgroundColor: '#123EAB',
+      backgroundColor: '#292929',
       borderBottomWidth: 3,
       // borderBottomColor: '#3B14AF',
       width: '100%',
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
       marginLeft: 10,
       width: 90,
       height: 90,
-      backgroundColor: '#34C6CD',
+      backgroundColor: '#ebebeb',
       borderRadius: 3,
       boxShadow: 'inset 0 2px 4px #210672'
     },
