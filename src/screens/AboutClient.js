@@ -79,6 +79,7 @@ export const AboutClient = (({route, editClient, navigation}) => {
 })
 
 const styles = StyleSheet.create({
+    
     container: {
         padding: 10,
     },
@@ -102,7 +103,8 @@ const styles = StyleSheet.create({
     centeredView: {
         justifyContent: "center",
         alignItems: "center",
-        marginTop: '50%'
+        marginTop: '50%',
+        
     },
     modalView: {
         margin: 50,
