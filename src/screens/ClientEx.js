@@ -45,6 +45,12 @@ export const ClientEx = (({ route, navigation}) => {
                             style={styles.input}
                             onChangeText={(text)=>{state.name = text}}
                             ></TextInput>
+
+                            <TextInput
+                            placeholder='Вес отягощения(кг)'
+                            style={styles.input}
+                            onChangeText={(text)=>{state.name = text}}
+                            ></TextInput>
                             <Pressable
                             style={[styles.button, styles.buttonClose]}
                             onPress={() => showModal()}

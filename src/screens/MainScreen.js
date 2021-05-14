@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, StyleSheet, View, Text, TouchableOpacity, Dimensions } from 'react-native';
 import { Client } from '../components/Client'
 
+
 export const MainScreen = ({ clients, navigation}) => {
     const windowWidth = Dimensions.get('window').width;
     const windowHeight = Dimensions.get('window').height;
@@ -15,12 +16,21 @@ export const MainScreen = ({ clients, navigation}) => {
             }
           </View>
           
-          <View style={styles.add}>
+          <View style={[styles.add, styles.addClient]}>
               <TouchableOpacity 
                 style={styles.buttonStyle}
                 onPress={() => navigation.navigate('Add')}
               >
                 <Text style={styles.buttonText}>+</Text>
+              </TouchableOpacity>
+          </View>
+
+          <View style={[styles.add, styles.addEx]}>
+              <TouchableOpacity 
+                style={styles.buttonStyle}
+                onPress={() => navigation.navigate('AddEx')}
+              >
+                <Text style={styles.buttonText}>Ex</Text>
               </TouchableOpacity>
           </View>
         
@@ -48,10 +58,10 @@ const styles = StyleSheet.create({
     },
     add: {
       position: 'absolute',
-      
+      bottom: 20,
       justifyContent: 'center',
       alignItems: 'center',
-      bottom: 20,
+      
       
       width: 120,
       height: 120,
@@ -62,6 +72,13 @@ const styles = StyleSheet.create({
       // boxShadow: '0 2px 4px #210672'
       
 
+    },
+    addClient: {
+      left: 160
+    },
+
+    addEx: {
+      left: 20
     },
 
     buttonStyle: {

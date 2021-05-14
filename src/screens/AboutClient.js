@@ -8,6 +8,7 @@ export const AboutClient = (({route, editClient, navigation}) => {
 
     const {client} = route.params
 
+
     let state = {
         id: client.id,
         name: client.name,
@@ -19,6 +20,7 @@ export const AboutClient = (({route, editClient, navigation}) => {
     }
 
     const editSave = () => {
+        
         editClient(state)
         setModalVisible(!modalVisible)
     }

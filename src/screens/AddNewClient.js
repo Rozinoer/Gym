@@ -3,6 +3,16 @@ import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { SaveClient } from '../components/SaveClient'
 
 export const AddNewClient = ({addClient, navigation}) => {
+    const format = (data) =>{
+        return(
+        
+        data
+    
+        )
+    }
+
+
+
     let state = {
         name: '',
         surname: '',
@@ -77,7 +87,7 @@ export const AddNewClient = ({addClient, navigation}) => {
                 ></TextInput>
             </View>
             <Text style={styles.text}>{state.name}</Text>
-            <SaveClient onSubmit={ addClient } value={ state } navigation={navigation} />
+            <SaveClient onSubmit={ addClient } value={ format(state) } navigation={navigation} />
         </View>
     )
 }
