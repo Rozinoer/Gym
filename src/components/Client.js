@@ -4,6 +4,8 @@ import { Button, Pressable, StyleSheet, Text, View } from 'react-native';
 export const Client = ({ client, navigation}) => {
     return(
         <Pressable style={styles.client} onPress={() => navigation.navigate('Info', {client: client})}>
+
+            <View style={styles.avatar} />
             <Text style={styles.text}>
                 { client.surname + ' ' + client.name }
             </Text>
@@ -13,18 +15,34 @@ export const Client = ({ client, navigation}) => {
 
 const styles = StyleSheet.create({
     client: {
-      height: 50,
-      justifyContent: 'center',
+      cursor: 'pointer',
+      boxSizing: 'border-box',
+      display: 'flex',
+      flexDirection: 'row',
+      height: 110,
+      justifyContent: 'flex-start',
       alignItems: 'center',
-      backgroundColor: 'white',
-      borderColor: 'black',
-      borderRadius: 5,
-      borderWidth: 1,
-      marginTop: 5,
-      width: '100%'
+      // backgroundColor: '#123EAB',
+      backgroundColor: '#292929',
+      borderBottomWidth: 3,
+      // borderBottomColor: '#3B14AF',
+      width: '100%',
+      boxShadow: '0 2px 4px #210672'
     },
+
+    avatar: {
+      marginLeft: 10,
+      width: 90,
+      height: 90,
+      backgroundColor: '#ebebeb',
+      borderRadius: 3,
+      boxShadow: 'inset 0 2px 4px #210672'
+    },
+
     text:{
-        fontSize: 20,
-        color: 'black',
+        fontSize: 41,
+        
+        marginLeft: 45,
+        color: '#fff',
     }
   });

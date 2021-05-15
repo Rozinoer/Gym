@@ -21,10 +21,10 @@ export const ClientEx = (({ route, navigation}) => {
             <View style={styles.add}>
             { client.ex.map(ex => {
                 return <Pressable
-                style={styles.ex}
+                style={styles.regularField}
                 onPress={()=>{alert('hi')}}
                 >
-                <Text style={{color: 'black', fontSize: 20,}}>{ ex }</Text>
+                <Text style={styles.regularText}>{ ex }</Text>
                 </Pressable>
             })
             }
@@ -42,6 +42,12 @@ export const ClientEx = (({ route, navigation}) => {
                         <View style={styles.modalView}>
                             <TextInput
                             placeholder='Название'
+                            style={styles.input}
+                            onChangeText={(text)=>{state.name = text}}
+                            ></TextInput>
+
+                            <TextInput
+                            placeholder='Вес отягощения(кг)'
                             style={styles.input}
                             onChangeText={(text)=>{state.name = text}}
                             ></TextInput>
@@ -68,7 +74,9 @@ const styles=StyleSheet.create({
     centeredView: {
         justifyContent: "center",
         alignItems: "center",
-        marginTop: '50%'
+        marginTop: '50%',
+
+        border: 'none',
     },
     modalView: {
         margin: 50,
@@ -105,6 +113,28 @@ const styles=StyleSheet.create({
         marginStart: 10,
         marginEnd: 10,
         borderWidth: 1
+    },
+
+    regularField: {
+
+        boxSizing: 'border-box',
+        display: 'flex',
+        flexDirection: 'row',
+        height: 110,
+        justifyContent: 'center',
+        alignItems: 'center',
+      // backgroundColor: '#123EAB',
+        backgroundColor: '#292929',
+        borderBottomWidth: 3,
+      // borderBottomColor: '#3B14AF',
+        width: '100%',
+        boxShadow: '0 2px 4px #210672',
+        
+    },
+
+    regularText: {
+        fontSize: 27,
+        color: 'white',
     },
     addEx: {
         marginStart: 20,
