@@ -1,4 +1,4 @@
-import { ADD_CLIENT, UPDATE_CLIENT, REMOVE_CLIENT } from "../types"
+import { ADD_CLIENT, UPDATE_CLIENT, REMOVE_CLIENT, ADD_EX } from "../types"
 
 export const clientReducer = (state, action) => {
     switch (action.type) {
@@ -31,6 +31,11 @@ export const clientReducer = (state, action) => {
             return {...state, clients: [...state.clients.filter(
                 client => client.id !== action.id
             )]}
+        case ADD_EX:
+            return {...state, ex: [...state.ex, {
+                name: action.ex,
+                id: Date.now().toString()
+            }]}
         default:
             return state
     }
