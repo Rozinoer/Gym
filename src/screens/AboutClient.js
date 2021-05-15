@@ -64,12 +64,20 @@ export const AboutClient = (({route, editClient, navigation}) => {
                                     state.phone = text
                                 }}
                                 ></TextInput>
-                                <Pressable
-                                style={styles.button}
-                                onPress={editSave}
-                                >
-                                <Text style={styles.textButton}>Cохранить</Text>
-                                </Pressable>
+                                <View style={{flexDirection: 'row'}}>
+                                    <Pressable
+                                    style={styles.button}
+                                    onPress={editSave}
+                                    >
+                                    <Text style={styles.textButton}>Cохранить</Text>
+                                    </Pressable>
+                                    <Pressable
+                                    style={styles.button}
+                                    onPress={setModalVisible(!modalVisible)}
+                                    >
+                                    <Text style={styles.textButton}>Назад</Text>
+                                    </Pressable>
+                                </View>
                             </View>
                         </View>
                     </Modal>
