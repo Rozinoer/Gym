@@ -7,6 +7,7 @@ import { AboutClient } from './screens/AboutClient';
 import { ClientProgress } from './screens/ClientProgress';
 import { ClientEx } from './screens/ClientEx';
 import { ClientContext } from './context/client/clientContext';
+import { AddNewEx } from './screens/AddNewEx'
 
 export const MainLayout = () => {
     const {clients, ex, addClient, editClient, removeClient, addEx} = useContext(ClientContext)
@@ -14,7 +15,7 @@ export const MainLayout = () => {
 
     return <NavigationContainer>
             <Stack.Navigator initialRouteName='Main'>
-                <Stack.Screen name='Main' >
+                 <Stack.Screen name='Main' >
                     {props => <MainScreen { ...props } clients={clients} ex={ex} addEx={addEx} />}
                 </Stack.Screen>
                 <Stack.Screen name='Add' >
@@ -29,6 +30,10 @@ export const MainLayout = () => {
                 <Stack.Screen name='Ex'>
                     {props => <ClientEx {...props} />}
                 </Stack.Screen>
+                <Stack.Screen name='AddEx'>
+                    {props => <AddNewEx {...props}  />}
+                </Stack.Screen>
             </Stack.Navigator>
         </NavigationContainer>
 }
+
