@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
 	wrapper: {
 		width: '100%',
 		height: '100%',
-		minWidth: 400,
+		minWidth: 320,
 		flex: 1,
 		alignItems: 'center',
 		backgroundColor: '#c4c4c4',
