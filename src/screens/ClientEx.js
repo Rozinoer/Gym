@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, StyleSheet, View, Modal, Text, Pressable, TextInput} from 'react-native';
 
-export const ClientEx = (({ route, navigation}) => {
+export const ClientEx = (({ route, ex,navigation}) => {
     let state = {
         name: ''
     }
@@ -40,7 +40,12 @@ export const ClientEx = (({ route, navigation}) => {
                 onRequestClose={() => {setModalVisible(!modalVisible)}}>
                     <View style={styles.centeredView}>
                         <View style={styles.modalView}>
-                            <TextInput
+                            {
+                                ex.map(ex=>{
+                                    return <Text>{ex.name}</Text>
+                                })
+                            }
+                            {/* <TextInput
                             placeholder='Название'
                             style={styles.input}
                             onChangeText={(text)=>{state.name = text}}
@@ -50,10 +55,10 @@ export const ClientEx = (({ route, navigation}) => {
                             placeholder='Вес отягощения(кг)'
                             style={styles.input}
                             onChangeText={(text)=>{state.name = text}}
-                            ></TextInput>
+                            ></TextInput> */}
                             <Pressable
                             style={[styles.button, styles.buttonClose]}
-                            onPress={() => showModal()}
+                            onPress={() => setModalVisible(!modalVisible)}
                             >
                             <Text style={styles.textStyle}>Cохранить</Text>
                             </Pressable>
@@ -76,7 +81,7 @@ const styles=StyleSheet.create({
         alignItems: "center",
         marginTop: '50%',
 
-        border: 'none',
+        // border: 'none',
     },
     modalView: {
         margin: 50,
@@ -117,7 +122,7 @@ const styles=StyleSheet.create({
 
     regularField: {
 
-        boxSizing: 'border-box',
+        // boxSizing: 'border-box',
         display: 'flex',
         flexDirection: 'row',
         height: 110,
@@ -128,7 +133,7 @@ const styles=StyleSheet.create({
         borderBottomWidth: 3,
       // borderBottomColor: '#3B14AF',
         width: '100%',
-        boxShadow: '0 2px 4px #210672',
+        // boxShadow: '0 2px 4px #210672',
         
     },
 

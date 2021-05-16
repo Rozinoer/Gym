@@ -14,7 +14,7 @@ export const MainScreen = ({ clients, ex, addEx, navigation }) => {
   const saveEx = (name) => {
     addEx(name)
     setModalVisible(!modalVisible)
-}
+  }
     
     return (
         <View style={styles.wrapper}>
@@ -41,98 +41,43 @@ export const MainScreen = ({ clients, ex, addEx, navigation }) => {
           </View>
 
           <View style={[styles.add, styles.addEx]}>
-              <TouchableOpacity 
-                style={styles.buttonStyle}
-                onPress={() => navigation.navigate('AddEx')}
-              >
-                <Text style={styles.buttonText}>Ex</Text>
-              </TouchableOpacity>
-              </View>
-<View>
-                <Modal
-                    animationType='slide'
-                    transparent={true}
-                    visible={modalVisible}
-                    onRequestClose={() => {setModalVisible(!modalVisible)}}>
-                        <View style={styles.centeredView}>
-                            <View style={styles.modalView}>
-                                <TextInput
-                                style={styles.input}
-                                onChangeText={(text)=>{
-                                   name = text
-                                }}
-                                ></TextInput>
-                                <View style={{flexDirection: 'row'}}>
-                                <Pressable onPress={() => saveEx(name)}>
-                                  <Text>Сохранить</Text>
-                                </Pressable>
-                                <Pressable onPress={() => setModalVisible(!modalVisible)}>
-                                  <Text>Назад</Text>
-                                </Pressable>
-                                </View>
-                            </View>
-                        </View>
-                    </Modal>
-                </View>
+            <TouchableOpacity 
+              style={styles.buttonStyle}
+              onPress={() => navigation.navigate('AddEx')}
+            >
+              <Text style={styles.buttonText}>Ex</Text>
+            </TouchableOpacity>
           </View>
-        
-)
+            <View>
+              <Modal
+                animationType='slide'
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => {setModalVisible(!modalVisible)}}>
+                  <View style={styles.centeredView}>
+                    <View style={styles.modalView}>
+                      <TextInput
+                        style={styles.input}
+                        onChangeText={(text)=>{
+                        name = text
+                        }}>
+                        </TextInput>
+                        <View style={{flexDirection: 'row'}}>
+                          <Pressable onPress={() => saveEx(name)}>
+                            <Text>Сохранить</Text>
+                          </Pressable>
+                          <Pressable onPress={() => setModalVisible(!modalVisible)}>
+                            <Text>Назад</Text>
+                          </Pressable>
+                        </View>
+                      </View>
+                    </View>
+                  </Modal>
+                </View>
+          </View> 
+          )
 }
 
-// =======
-// import React, {useState} from 'react';
-// import { Button, StyleSheet, View, Text, Pressable, Modal, TextInput, } from 'react-native';
-// import { Client } from '../components/Client'
-
-// export const MainScreen = ({ clients, ex, addEx, navigation}) => {
-  
-//     return (
-//         <View>
-//         <View style={styles.clients}>
-//           { clients.map(client => {
-//             return <Client key={client.id} client={client} navigation={navigation}/>
-//           })
-//           }
-//         </View>
-//         <View style={styles.container}>
-//         <View style={styles.add}>
-//           <Pressable style={styles.button} onPress={() => navigation.navigate('Add')}>
-//             <Text style={{color: 'white', fontSize: 16}}>Добавить клиента</Text>
-//           </Pressable>
-//           <Pressable style={styles.button} onPress={() => setModalVisible(!modalVisible)}>
-//             <Text style={{color: 'white', fontSize: 16}}>Добавить упражнение</Text>
-//           </Pressable>
-//           <View>
-//                 <Modal
-//                     animationType='slide'
-//                     transparent={true}
-//                     visible={modalVisible}
-//                     onRequestClose={() => {setModalVisible(!modalVisible)}}>
-//                         <View style={styles.centeredView}>
-//                             <View style={styles.modalView}>
-//                                 <TextInput
-//                                 style={styles.input}
-//                                 onChangeText={(text)=>{
-//                                    name = text
-//                                 }}
-//                                 ></TextInput>
-//                                 <View style={{flexDirection: 'row'}}>
-//                                 <Pressable onPress={() => saveEx(name)}>
-//                                   <Text>Сохранить</Text>
-//                                 </Pressable>
-//                                 <Pressable onPress={() => setModalVisible(!modalVisible)}>
-//                                   <Text>Назад</Text>
-//                                 </Pressable>
-//                                 </View>
-//                             </View>
-//                         </View>
-//                     </Modal>
-//                 </View>
-//         </View>
-//         </View>
-//       </View>
-//     )
-// }
 
 const styles = StyleSheet.create({
 
@@ -168,7 +113,7 @@ const styles = StyleSheet.create({
       height: 120,
       borderRadius: 3,
       backgroundColor: '#292929',
-      boxShadow: '0 2px 4px #210672'
+      // boxShadow: '0 2px 4px #210672'
       // backgroundColor: '#216Fd1',
       // boxShadow: '0 2px 4px #210672'
       

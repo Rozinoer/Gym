@@ -15,8 +15,6 @@ export const Client = ({ client, navigation}) => {
 
 const styles = StyleSheet.create({
     client: {
-      cursor: 'pointer',
-      boxSizing: 'border-box',
       display: 'flex',
       flexDirection: 'row',
       height: 110,
@@ -27,7 +25,6 @@ const styles = StyleSheet.create({
       borderBottomWidth: 3,
       // borderBottomColor: '#3B14AF',
       width: '100%',
-      boxShadow: '0 2px 4px #210672'
     },
 
     avatar: {
@@ -36,7 +33,7 @@ const styles = StyleSheet.create({
       height: 90,
       backgroundColor: '#ebebeb',
       borderRadius: 3,
-      boxShadow: 'inset 0 2px 4px #210672'
+    //   boxShadow: 'inset 0 2px 4px #210672'
     },
 
     text:{
