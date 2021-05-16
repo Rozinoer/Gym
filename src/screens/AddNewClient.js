@@ -87,18 +87,32 @@ export const AddNewClient = ({addClient, navigation}) => {
                 ></TextInput>
             </View>
             <Text style={styles.text}>{state.name}</Text>
-            <SaveClient onSubmit={ addClient } value={ format(state) } navigation={navigation} />
+            <View style={styles.buttonContainer}>
+                <SaveClient style={styles.button} onSubmit={ addClient } value={ format(state) } navigation={navigation} />
+            </View>
+            
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
+        alignItems: 'flex-start',
+        height: '100%',
         padding: 10,
     },
     input: {
         borderBottomWidth: 1,
         width: 200,
+    },
+    buttonContainer: {
+        position: 'absolute',
+        bottom: 20,
+        width: '100%',
+        alignItems: 'center'
+    },
+    button: {
+        
     },
     parametrs: {
         flexDirection: 'row',

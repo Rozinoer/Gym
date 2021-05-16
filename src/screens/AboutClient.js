@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, StyleSheet, View, Text, Modal, TextInput, Pressable } from 'react-native';
+import { Button, TouchableOpacity, StyleSheet, View, Text, Modal, TextInput, Pressable } from 'react-native';
 import { ClientNavbar } from '../components/ClientNavbar'
 
 export const AboutClient = (({route, editClient, navigation}) => {
@@ -17,9 +17,18 @@ export const AboutClient = (({route, editClient, navigation}) => {
         weight: client.weight,
         data: client.data,
         phone: client.phone
+
+        
     }
 
-    const editSave = () => {
+    const check = (data) => {
+            if(data != '' || data != 0)
+                return data
+            else
+                return 'Не указано'
+        }
+
+  /*  const editSave = () => {
 <<<<<<< HEAD
         
         // editClient(state)
@@ -28,21 +37,50 @@ export const AboutClient = (({route, editClient, navigation}) => {
 >>>>>>> refs/remotes/origin/master
         setModalVisible(!modalVisible)
     }
+    */
+
+    const editSave = () => {
+
+    }
     return(
-        <View>
-            <ClientNavbar client={client} navigation={ navigation } />
-            <View style={styles.container}>
-                <View style={styles.container}>
-                    <Text style={styles.mainText}>{state.name}</Text>
-                    <Text style={styles.mainText}>{state.surname}</Text>
-                    <Text style={styles.mainText}>{state.phone}</Text>
-                </View>
-                <View style={styles.button}>
+        <View style={styles.wrapper}>
+            {/*<ClientNavbar style={styles.navbar} client={client} navigation={ navigation } />*/}
+            <View style={styles.clientInfo}>
+                    <Text style={styles.label}>Имя</Text>
+                    <Text style={styles.mainText}>{check(state.name)}</Text>
+
+                    <Text style={styles.label}>Фамилия</Text>
+                    <Text style={styles.mainText}>{check(state.surname)}</Text>
+
+                    <Text style={styles.label}>Телефон</Text>
+                    <Text style={styles.mainText}>{check(state.phone)}</Text>
+                
+                <TouchableOpacity 
+                  style={[styles.button, styles.redact]}
+                  onPress={() => {setModalVisible(!modalVisible)}}
+                >
+                  <Text style={styles.buttonText}>Редактировать</Text>
+                </TouchableOpacity>
+                {/*<View style={styles.button}>
                     <Button title = 'Редактировать' color = 'white' onPress={() => {setModalVisible(!modalVisible)}} />
-                </View>
+                </View>*/}
             </View>
-            <View>
-                <Modal
+            
+                
+         
+
+            
+            <TouchableOpacity 
+                  style={[styles.button, styles.add, styles.addEx]}
+                  onPress={() => navigation.navigate('AddEx')}
+                >
+                  <Text style={styles.buttonText}>Ex</Text>
+            </TouchableOpacity>
+            
+            
+            
+
+                {/*<Modal
                     animationType='slide'
                     transparent={true}
                     visible={modalVisible}
@@ -86,19 +124,50 @@ export const AboutClient = (({route, editClient, navigation}) => {
                                 </View>
                             </View>
                         </View>
-                    </Modal>
-                </View>
+                    </Modal>*/}
+                
         </View>
     )
 })
 
 const styles = StyleSheet.create({
+    wrapper: {
+        margin: 0,
+        padding: 0,
+        
+        width: '100%',
+        height: '100%',
+        
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        
+    },
     
+    navbar: {
+        width: '100%',
+    },
+
+    clientInfo: {
+        padding: 20,
+        flexDirection: 'column',
+        width: '100%',
+        minHeight: 250,
+        backgroundColor: '#fff',
+        elevation: 2,
+
+
+    },
+
+    label: {
+        fontSize: 32,
+    },
     container: {
         padding: 10,
     },
     mainText: {
         fontSize: 36,
+        marginBottom: 20,
+        color: 'grey',
     },
     text: {
         fontSize: 20,
@@ -107,12 +176,20 @@ const styles = StyleSheet.create({
         color: 'white',
     },
     button: {
-        marginTop: 10,
-        marginBottom: 10,
-        borderWidth: 1,
-        borderRadius: 5,
-        width: '100%',
-        backgroundColor: 'black',
+        
+        textAlign: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 20,
+        borderRadius: 3,
+        backgroundColor: '#292929',
+
+        elevation: 3
+    },
+
+    buttonText: {
+        color: '#fff',
+        fontSize: 32,
     },
     centeredView: {
         justifyContent: "center",
@@ -140,4 +217,30 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2,
         width: 200
     },
+
+    add: {
+
+      position: 'absolute',
+      
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: 120,
+      height: 120,
+      
+      // boxShadow: '0 2px 4px #210672'
+      // backgroundColor: '#216Fd1',
+      // boxShadow: '0 2px 4px #210672'
+      
+
+    },
+    addEx: {
+
+      left: 20,
+      bottom: 20,
+      margin: 10,
+    },
+
+    redact: {
+
+    }
 })

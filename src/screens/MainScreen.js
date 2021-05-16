@@ -32,24 +32,17 @@ export const MainScreen = ({ clients, ex, addEx, navigation }) => {
               >
                 <Text style={styles.buttonText}>+</Text>
               </TouchableOpacity>
-              <TouchableOpacity 
+              {/*<TouchableOpacity 
                 style={styles.buttonStyle}
                 onPress={() => setModalVisible(!modalVisible)}
               >
                 <Text style={styles.buttonText}>+</Text>
-              </TouchableOpacity>
+              </TouchableOpacity>*/}
           </View>
 
-          <View style={[styles.add, styles.addEx]}>
-            <TouchableOpacity 
-              style={styles.buttonStyle}
-              onPress={() => navigation.navigate('AddEx')}
-            >
-              <Text style={styles.buttonText}>Ex</Text>
-            </TouchableOpacity>
-          </View>
+          
             <View>
-              <Modal
+           {/*   <Modal
                 animationType='slide'
                 transparent={true}
                 visible={modalVisible}
@@ -72,7 +65,7 @@ export const MainScreen = ({ clients, ex, addEx, navigation }) => {
                         </View>
                       </View>
                     </View>
-                  </Modal>
+                  </Modal>*/}
                 </View>
           </View> 
           )
@@ -120,7 +113,7 @@ const styles = StyleSheet.create({
 
     },
     addClient: {
-      left: 160
+      
     },
 
     addEx: {
