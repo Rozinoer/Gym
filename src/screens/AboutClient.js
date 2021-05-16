@@ -21,7 +21,7 @@ export const AboutClient = (({route, editClient, navigation}) => {
 
     const editSave = () => {
         
-        editClient(state)
+        // editClient(state)
         setModalVisible(!modalVisible)
     }
     return(
@@ -35,7 +35,7 @@ export const AboutClient = (({route, editClient, navigation}) => {
                 </View>
                 <View style={styles.button}>
                     <Button title = 'Редактировать' color = 'white' onPress={() => {setModalVisible(!modalVisible)}} />
-                 </View>
+                </View>
             </View>
             <View>
                 <Modal
