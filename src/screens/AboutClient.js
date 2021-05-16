@@ -20,7 +20,6 @@ export const AboutClient = (({route, editClient, navigation}) => {
     }
 
     const editSave = () => {
-        
         editClient(state)
         setModalVisible(!modalVisible)
     }
@@ -75,7 +74,7 @@ export const AboutClient = (({route, editClient, navigation}) => {
                                     </Pressable>
                                     <Pressable
                                     style={styles.button}
-                                    onPress={setModalVisible(!modalVisible)}
+                                    onPress={()=>setModalVisible(!modalVisible)}
                                     >
                                     <Text style={styles.textButton}>Назад</Text>
                                     </Pressable>

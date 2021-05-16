@@ -4,8 +4,6 @@ import SaveEx from '../components/SaveEx'
 
 export const AddNewEx = ({addEx, navigation}) => {
 
-
-
 	const increment = (number) => {
 		return number
 	}
@@ -105,7 +103,6 @@ export const AddNewEx = ({addEx, navigation}) => {
 			{/*<SaveEx onSubmit={  } value={ state } navigation={navigation}/>*/}
 			
 		</View>
-		
 	)
 }
 
@@ -134,7 +131,7 @@ const styles = StyleSheet.create({
 		marginHorizontal: 20,
 		textAlign: 'center',
 		fontSize: 32,
-		border: 'none'
+		// border: 'none'
 	},
 	descriptionText: {
 
@@ -148,7 +145,7 @@ const styles = StyleSheet.create({
 		height: 90,
 		borderRadius: 3,
       	backgroundColor: '#292929',
-      	boxShadow: '0 2px 4px #210672'
+      	// boxShadow: '0 2px 4px #210672'
       
 	},
 

@@ -32,6 +32,6 @@ const styles = StyleSheet.create({
         height: 90,
         borderRadius: 3,
         backgroundColor: '#292929',
-        boxShadow: '0 2px 4px #210672'
+        // boxShadow: '0 2px 4px #210672'
     }
 });

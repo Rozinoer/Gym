@@ -10,9 +10,8 @@ export default function RegularPressableField(props) {
 }
 
 const styles = StyleSheet.create({
-	regularField: {
-		
-      boxSizing: 'border-box',
+	regularField: {	
+      // boxSizing: 'border-box',
       paddingHorizontal: 20,
       display: 'flex',
       flexDirection: 'row',
@@ -24,11 +23,8 @@ const styles = StyleSheet.create({
       borderBottomWidth: 3,
       // borderBottomColor: '#3B14AF',
       width: '100%',
-      boxShadow: '0 2px 4px #210672',
-      
-
+      // boxShadow: '0 2px 4px #210672',
 	},
-
       regularText: {
             color: '#fff',
             fontSize: 32,

@@ -28,10 +28,10 @@ export const MainLayout = () => {
                     {props => <ClientProgress {...props} />}
                 </Stack.Screen>
                 <Stack.Screen name='Ex'>
-                    {props => <ClientEx {...props} />}
+                    {props => <ClientEx {...props} ex={ex} />}
                 </Stack.Screen>
                 <Stack.Screen name='AddEx'>
-                    {props => <AddNewEx {...props}  />}
+                    {props => <AddNewEx {...props} addEx={addEx}  />}
                 </Stack.Screen>
             </Stack.Navigator>
         </NavigationContainer>
