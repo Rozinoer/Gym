@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, TouchableOpacity, StyleSheet, View, Text, Modal, TextInput, Pressable } from 'react-native';
+import { color } from 'react-native-reanimated';
 import { ClientNavbar } from '../components/ClientNavbar'
 
 export const AboutClient = (({route, editClient, navigation}) => {
@@ -7,7 +8,6 @@ export const AboutClient = (({route, editClient, navigation}) => {
     const [modalVisible, setModalVisible] = useState(false)
 
     const {client} = route.params
-
 
     let state = {
         id: client.id,
@@ -17,31 +17,20 @@ export const AboutClient = (({route, editClient, navigation}) => {
         weight: client.weight,
         data: client.data,
         phone: client.phone
-
-        
     }
 
     const check = (data) => {
-            if(data != '' || data != 0)
-                return data
-            else
+            if(data === '' || data === 0)
                 return 'Не указано'
+            else
+                return data
         }
 
-  /*  const editSave = () => {
-<<<<<<< HEAD
-        
-        // editClient(state)
-=======
+    const editSave = () => {
         editClient(state)
->>>>>>> refs/remotes/origin/master
         setModalVisible(!modalVisible)
     }
-    */
 
-    const editSave = () => {
-
-    }
     return(
         <View style={styles.wrapper}>
             {/*<ClientNavbar style={styles.navbar} client={client} navigation={ navigation } />*/}
@@ -61,26 +50,22 @@ export const AboutClient = (({route, editClient, navigation}) => {
                 >
                   <Text style={styles.buttonText}>Редактировать</Text>
                 </TouchableOpacity>
-                {/*<View style={styles.button}>
-                    <Button title = 'Редактировать' color = 'white' onPress={() => {setModalVisible(!modalVisible)}} />
-                </View>*/}
             </View>
-            
-                
-         
-
             
             <TouchableOpacity 
                   style={[styles.button, styles.add, styles.addEx]}
-                  onPress={() => navigation.navigate('AddEx')}
+                  onPress={() => navigation.navigate('AddEx', {client: client})}
                 >
                   <Text style={styles.buttonText}>Ex</Text>
             </TouchableOpacity>
             
-            
-            
+            {/* <TouchableOpacity 
+                  onPress={() => navigation.navigate('Ex', {client: client})}
+                >
+                  <Text style={styles.buttonText, {color: 'black'}}>Ex</Text>
+            </TouchableOpacity> */}
 
-                {/*<Modal
+                <Modal
                     animationType='slide'
                     transparent={true}
                     visible={modalVisible}
@@ -124,8 +109,7 @@ export const AboutClient = (({route, editClient, navigation}) => {
                                 </View>
                             </View>
                         </View>
-                    </Modal>*/}
-                
+                    </Modal>
         </View>
     )
 })
@@ -183,7 +167,6 @@ const styles = StyleSheet.create({
         padding: 20,
         borderRadius: 3,
         backgroundColor: '#292929',
-
         elevation: 3
     },
 

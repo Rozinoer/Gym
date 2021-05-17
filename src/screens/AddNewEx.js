@@ -1,25 +1,31 @@
 import React, {useState} from 'react'
-import { View, StyleSheet, TouchableOpacity, Text, TextInput } from 'react-native'
+import { View, StyleSheet, TouchableOpacity, Text, TextInput, Modal } from 'react-native'
 import SaveEx from '../components/SaveEx'
 
-export const AddNewEx = ({addEx, navigation}) => {
+export const AddNewEx = ({ex, route, addClientEx, navigation}) => {
+
+	let approaches = 0
+	let repetitions = 0
+	let PHapproaches = 'Кол-во подходов'
+	let PHrepetitions = 'Кол-во повторений'
+
+	const {client} = route.params
 
 	const increment = (number) => {
-		return number
+		return (++number)
 	}
 
 	const decrement = (number) => {
-		return number
+		return (--number)
 	}
 
-	const onPress = () => {
-
-	}
 	let state = {
-		description: '',
-		approaches: 0,
-		repetitions: 0,
-		rest: 0,
+		name: '',
+		weight: '',
+		approaches: '',
+		repetitions: '',
+		rest: '',
+		clientId: client.id
 	}
 	return (
 		<View style={styles.wrapper}>
@@ -27,29 +33,17 @@ export const AddNewEx = ({addEx, navigation}) => {
 				<View style={[styles.add, styles.addEx]}>
 		            <TouchableOpacity 
 		              style={styles.buttonStyle}
-		              onPress={() => navigation.navigate('Ex')}
+		              onPress={() => {
+						  <View>
+							  {
+								alert(client.name)
+							  }
+						  </View>
+					  }}
 		            >
 		              <Text style={styles.buttonText}>Упражнение ▼</Text>
 		            </TouchableOpacity>
 		          </View>
-
-		          <View style={[styles.button]}>
-		            <TouchableOpacity 
-		              style={styles.buttonStyle}
-		              onPress={() => navigation.navigate('Ex')}
-		            >
-		              <Text style={styles.buttonText}>New</Text>
-		            </TouchableOpacity>
-		          </View>
-
-				{/*<TextInput 
-                style={[styles.textinput, styles.descriptionText]}
-                onChangeText={(text) => {
-                    if (text)
-                        state.description = text
-                    }}
-                placeholder='Упражнение'>
-                </TextInput>*/}
 			</View>
 			<View style={[styles.weightContainer, styles.section]}>
 				<TextInput 
@@ -66,7 +60,7 @@ export const AddNewEx = ({addEx, navigation}) => {
 					style={styles.button}
 					onPress={increment}
 				>
-					<Text style={styles.buttonText}>+</Text>
+					<Text style={styles.buttonText}>-</Text>
 				</TouchableOpacity>
 
 				<TextInput 
@@ -75,14 +69,19 @@ export const AddNewEx = ({addEx, navigation}) => {
                     if (text)
                         state.approaches = text
                     }}
-                placeholder='Кол-во подходов'>
+                placeholder={PHapproaches}>
                 </TextInput>
 
 				<TouchableOpacity
 					style={styles.button}
-					onPress={decrement}
+					onPress={() => {
+						approaches = increment(approaches)
+						if (approaches > 0) {
+							PHapproaches = approaches.toString()
+						}
+					}}
 				>
-					<Text style={styles.buttonText}>-</Text>
+					<Text style={styles.buttonText}>+</Text>
 				</TouchableOpacity>
 			</View>
 			<View style={[styles.repetitionsContainer, styles.section]}>
@@ -90,7 +89,7 @@ export const AddNewEx = ({addEx, navigation}) => {
 					style={styles.button}
 					onPress={increment}
 				>
-					<Text style={styles.buttonText}>+</Text>
+					<Text style={styles.buttonText}>-</Text>
 				</TouchableOpacity>
 
 				<TextInput 
@@ -99,7 +98,7 @@ export const AddNewEx = ({addEx, navigation}) => {
                     if (text)
                         state.repetitions = text
                     }}
-                placeholder='Кол-во повторов'>
+                placeholder={PHrepetitions}>
                 </TextInput>
 
                 <TouchableOpacity
@@ -124,7 +123,9 @@ export const AddNewEx = ({addEx, navigation}) => {
 
 			<TouchableOpacity
 				style={styles.save}
-				onPress={ onPress }
+				onPress={()=>{
+					addClientEx(state)
+				}}
 			>
 				<Text style={styles.buttonText}>Сохранить</Text>
 			</TouchableOpacity>

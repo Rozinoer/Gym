@@ -1,74 +1,71 @@
 import React, { useState } from 'react';
 import { Button, StyleSheet, View, Text, TouchableOpacity, Dimensions, Pressable, Modal, TextInput } from 'react-native';
+import { set } from 'react-native-reanimated';
 import { Client } from '../components/Client'
 
 
-export const MainScreen = ({ clients, ex, addEx, navigation }) => {
+export const MainScreen = ({ clients, addEx, navigation }) => {
     const windowWidth = Dimensions.get('window').width;
     const windowHeight = Dimensions.get('window').height;
 
     const [modalVisible, setModalVisible] = useState(false)
-
-  let name = ''
-
-  const saveEx = (name) => {
-    addEx(name)
-    setModalVisible(!modalVisible)
-  }
     
+    let name = ''
     return (
-        <View style={styles.wrapper}>
-          <View style={styles.clients}>
+      <View style={styles.wrapper}>
+        <View style={styles.clients}>
             { clients.map(client => {
               return <Client key={client.id} client={client} navigation={navigation}/>
             })
             }
-          </View>
+        </View>
           
-          <View style={[styles.add, styles.addClient]}>
-              <TouchableOpacity 
-                style={styles.buttonStyle}
-                onPress={() => navigation.navigate('Add')}
-              >
+        <View style={[styles.add, styles.addClient]}>
+            <TouchableOpacity 
+              style={styles.buttonStyle}
+              onPress={() => navigation.navigate('Add')}>
                 <Text style={styles.buttonText}>+</Text>
               </TouchableOpacity>
-              {/*<TouchableOpacity 
-                style={styles.buttonStyle}
-                onPress={() => setModalVisible(!modalVisible)}
-              >
+              <TouchableOpacity 
+              style={styles.buttonStyle}
+              onPress={() => setModalVisible(!modalVisible)}>
                 <Text style={styles.buttonText}>+</Text>
-              </TouchableOpacity>*/}
-          </View>
-
-          
-            <View>
-           {/*   <Modal
-                animationType='slide'
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => {setModalVisible(!modalVisible)}}>
-                  <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                      <TextInput
-                        style={styles.input}
-                        onChangeText={(text)=>{
-                        name = text
-                        }}>
-                        </TextInput>
-                        <View style={{flexDirection: 'row'}}>
-                          <Pressable onPress={() => saveEx(name)}>
-                            <Text>Сохранить</Text>
-                          </Pressable>
-                          <Pressable onPress={() => setModalVisible(!modalVisible)}>
-                            <Text>Назад</Text>
-                          </Pressable>
-                        </View>
-                      </View>
-                    </View>
-                  </Modal>*/}
-                </View>
-          </View> 
-          )
+              </TouchableOpacity>
+        </View>
+        <Modal
+        animationType='slide'
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {setModalVisible(!modalVisible)}}>
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <TextInput
+                style={styles.input}
+                placeholder= 'Название упражнения'
+                onChangeText={(text)=>{
+                  name = text
+              }}></TextInput>
+                <View style={{flexDirection: 'row'}}>
+                  <Pressable
+                    style={styles.button}
+                    onPress={() => {
+                      addEx(name)
+                      setModalVisible(!modalVisible)
+                    }}>
+                    <Text style={styles.textButton}>Cохранить</Text>
+                  </Pressable>
+                  <Pressable
+                    style={styles.button}
+                    onPress={()=>setModalVisible(!modalVisible)}
+                  >
+                 <Text style={styles.textButton}>Назад</Text>
+                 </Pressable>
+                 </View>
+             </View>
+         </View>
+     </Modal>
+    </View> 
+    )
 }
 
 
@@ -112,10 +109,6 @@ const styles = StyleSheet.create({
       
 
     },
-    addClient: {
-      
-    },
-
     addEx: {
       left: 20
     },
@@ -142,7 +135,7 @@ const styles = StyleSheet.create({
       fontSize: 92,
       paddingBottom: 20,
     },
-  button: {
+    button: {
       backgroundColor: 'black',
       borderRadius: 4,
       width: '48%',
@@ -155,7 +148,7 @@ const styles = StyleSheet.create({
       alignItems: "center",
       marginTop: '50%'
     },
-  modalView: {
+    modalView: {
       margin: 50,
       backgroundColor: "white",
       borderRadius: 20,
@@ -172,7 +165,19 @@ const styles = StyleSheet.create({
       borderBottomWidth: 2,
       width: 200
   },
-
+  textButton: {
+    color: 'white',
+},
+  button: {
+    
+    textAlign: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+    borderRadius: 3,
+    backgroundColor: '#292929',
+    elevation: 3
+},
   });
 
 

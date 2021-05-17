@@ -1,31 +1,22 @@
 import React, { useState } from 'react';
 import { Button, StyleSheet, View, Modal, Text, Pressable, TextInput} from 'react-native';
 
-export const ClientEx = (({ route, ex,navigation}) => {
-    let state = {
-        name: ''
-    }
+export const ClientEx = (({ route, ex, navigation}) => {
+
     const {client} = route.params
     const [modalVisible, setModalVisible] = useState(false)
 
-    const addEx = (name) => {
-        client.ex = [...client.ex, name]
-    }
-
-    const showModal = () => {
-        setModalVisible(!modalVisible)
-        addEx(state.name)
-    }
     return (
         <View>
             <View style={styles.add}>
             { client.ex.map(ex => {
-                return <Pressable
-                style={styles.regularField}
-                onPress={()=>{alert('hi')}}
-                >
-                <Text style={styles.regularText}>{ ex }</Text>
-                </Pressable>
+                // return <Pressable
+                // style={styles.regularField}
+                // onPress={()=>{alert('hi')}}
+                // >
+                // <Text style={styles.regularText}>{ ex.name }</Text>
+                // </Pressable>
+                return <View><Text>{ex.name}</Text></View>
             })
             }
             <View style={styles.addEx}>

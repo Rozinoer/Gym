@@ -1,4 +1,4 @@
-import { ADD_CLIENT, UPDATE_CLIENT, REMOVE_CLIENT, ADD_EX } from "../types"
+import { ADD_CLIENT, UPDATE_CLIENT, REMOVE_CLIENT, ADD_EX, ADD_CLIENT_EX } from "../types"
 
 export const clientReducer = (state, action) => {
     switch (action.type) {
@@ -36,6 +36,23 @@ export const clientReducer = (state, action) => {
                 name: action.ex,
                 id: Date.now().toString()
             }]}
+        case ADD_CLIENT_EX:
+            return {...state, clients: [...state.clients.map(
+                client => {
+                    if (client.id === action.ex.clientId) {
+                        client.ex = [...client.ex, {
+                            name: action.ex.name,
+                            id: action.ex.id,
+                            clientId: action.ex.clientId,
+                            weight: action.ex.weight,
+                            repeat: action.ex.repeat,
+                            times: action.ex.times,
+                            rest: action.ex.rest
+                        }]
+                    }
+                    return client
+                }
+            )]}
         default:
             return state
     }
