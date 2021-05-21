@@ -5,7 +5,7 @@ export const ClientEx = (({ route, ex,navigation}) => {
     let state = {
         name: ''
     }
-    const {client} = route.params
+    const client = route.params
     const [modalVisible, setModalVisible] = useState(false)
 
     const addEx = (name) => {

@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
       margin: 10,
       justifyContent: 'space-between',
       width: '100%',
-      flexDirection: 'row',
+      
       
       
       width: 120,

@@ -22,7 +22,11 @@ export const AboutClient = (({route, editClient, navigation}) => {
     }
 
     const check = (data) => {
-            if(data != '' || data != 0)
+            if(data != '' 
+                &&
+                data != 0 
+                &&
+                data != 'unavable')
                 return data
             else
                 return 'Не указано'
