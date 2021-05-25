@@ -1,4 +1,4 @@
-import {LOAD_CLIENTS, ADD_CLIENT} from '../types'
+import {LOAD_CLIENTS, ADD_CLIENT, EDIT_CLIENT} from '../types'
 
 const initialState = {
     allClients: []
@@ -14,6 +14,18 @@ export const clientReducer = (state = initialState, action) => {
                ...action.payload
             }
         ]}
+        case EDIT_CLIENT:
+            return {...state, allClients: state.allClients.map(
+                client => {
+                    if (client.id === action.payload.id)
+                    {
+                        client.name = action.payload.name
+                        client.surname = action.payload.surname
+                        client.phone = action.payload.phone
+                    }
+                    return client
+                }
+            )}
         default:
             return state
     }

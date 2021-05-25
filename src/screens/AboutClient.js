@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { TouchableOpacity, StyleSheet, View, Text, Modal, TextInput, Pressable } from 'react-native';
-import { ClientNavbar } from '../components/ClientNavbar'
+import { useDispatch } from 'react-redux';
+import { editClient } from '../store/actions/client';
 
-export const AboutClient = (({route, editClient, navigation}) => {
+export const AboutClient = (({route, navigation}) => {
 
     const [modalVisible, setModalVisible] = useState(false)
 
@@ -24,9 +25,10 @@ export const AboutClient = (({route, editClient, navigation}) => {
             else
                 return 'Не указано'
     }
+    const dispatch = useDispatch()
 
     const editSave = () => {
-        editClient(state)
+        dispatch(editClient(state))
         setModalVisible(!modalVisible)
     }
 

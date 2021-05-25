@@ -1,5 +1,5 @@
-import { ADD_CLIENT } from "../../context/types"
-import { LOAD_CLIENTS } from "../types"
+import { LOAD_CLIENTS, ADD_CLIENT, EDIT_CLIENT } from "../types"
+
 export const DATA = [
     {
         id: '1',
@@ -28,6 +28,12 @@ export const addClient = (data) => {
     data.id = Date.now().toString()
     return {
         type: ADD_CLIENT,
+        payload: data
+    }
+}
+export const editClient = (data) => {
+    return {
+        type: EDIT_CLIENT,
         payload: data
     }
 }
