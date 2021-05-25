@@ -1,9 +1,13 @@
-import React from 'react';
-import { StyleSheet, View, Button, TouchableOpacity, Text } from 'react-native';
+import React from 'react'
+import { StyleSheet, TouchableOpacity, Text } from 'react-native'
+import { useDispatch } from 'react-redux'
+import { addClient } from '../store/actions/client'
 
-export const SaveClient = ({ onSubmit, value, navigation}) => {
+export const SaveClient = ({ value, navigation}) => {
+    const dispatch = useDispatch()
+    
     const presHandler = () => {
-        onSubmit(value)
+        dispatch(addClient(value))
         navigation.navigate('Main')
     }
 

@@ -1,18 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { SaveClient } from '../components/SaveClient'
 
-export const AddNewClient = ({addClient, navigation}) => {
-    const format = (data) =>{
-        return(
-        
-        data
-    
-        )
-    }
-
-
-
+export const AddNewClient = ({navigation}) => {
     let state = {
         name: '',
         surname: '',
@@ -88,7 +78,7 @@ export const AddNewClient = ({addClient, navigation}) => {
             </View>
             <Text style={styles.text}>{state.name}</Text>
             <View style={styles.buttonContainer}>
-                <SaveClient style={styles.button} onSubmit={ addClient } value={ format(state) } navigation={navigation} />
+                <SaveClient style={styles.button} value={ state } navigation={navigation} />
             </View>
             
         </View>

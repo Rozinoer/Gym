@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
-import { Button, StyleSheet, View, Text, TouchableOpacity, Dimensions, Pressable, Modal, TextInput } from 'react-native';
-import { set } from 'react-native-reanimated';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, View, Text, TouchableOpacity, Dimensions, Pressable, Modal, TextInput } from 'react-native';
 import { Client } from '../components/Client'
+import {useDispatch, useSelector} from 'react-redux'
+import {loadClients} from '../store/actions/client'
 
-
-export const MainScreen = ({ clients, addEx, navigation }) => {
+export const MainScreen = ({ navigation }) => {
     const windowWidth = Dimensions.get('window').width;
     const windowHeight = Dimensions.get('window').height;
 
     const [modalVisible, setModalVisible] = useState(false)
     
-    let name = ''
+    const dispatch = useDispatch()
+
+    useEffect (() => {
+      dispatch(loadClients())
+    },[dispatch])
+
+    const allClients = useSelector(state => state.client.allClients)
     return (
       <View style={styles.wrapper}>
         <View style={styles.clients}>
-            { clients.map(client => {
+            { allClients.map(client => {
               return <Client key={client.id} client={client} navigation={navigation}/>
             })
             }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, StyleSheet, View, Modal, Text, Pressable, TextInput} from 'react-native';
+import { Button, StyleSheet, View, Modal, Text, Pressable} from 'react-native';
 
 export const ClientEx = (({ route, ex,navigation}) => {
     let state = {
