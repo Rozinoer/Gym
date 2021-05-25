@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Button, StyleSheet, View, Modal, Text, Pressable} from 'react-native';
 
-export const ClientEx = (({ route, ex,navigation}) => {
+export const ClientEx = (({ route, navigation}) => {
     let state = {
         name: ''
     }
-    const client = route.params
+    const {client} = route.params
     const [modalVisible, setModalVisible] = useState(false)
 
     return (
@@ -18,7 +18,7 @@ export const ClientEx = (({ route, ex,navigation}) => {
                 // >
                 // <Text style={styles.regularText}>{ ex.name }</Text>
                 // </Pressable>
-                return <View><Text>{ex.name}</Text></View>
+                return <View key={ex.id}><Text>{ex.name}</Text></View>
             })
             }
             <View style={styles.addEx}>
@@ -34,9 +34,7 @@ export const ClientEx = (({ route, ex,navigation}) => {
                     <View style={styles.centeredView}>
                         <View style={styles.modalView}>
                             {
-                                ex.map(ex=>{
-                                    return <Text>{ex.name}</Text>
-                                })
+
                             }
                             {/* <TextInput
                             placeholder='Название'

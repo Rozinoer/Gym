@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import { View, StyleSheet, TouchableOpacity, Text, TextInput, Modal } from 'react-native'
-import { useContext } from 'react/cjs/react.development'
-import SaveEx from '../components/SaveEx'
+import { useDispatch } from 'react-redux'
+import { addClientEx } from '../store/actions/client'
 
-export const AddNewEx = ({ex, route, addClientEx, navigation}) => {
+export const AddNewEx = ({route, navigation}) => {
 
 	const [approaches, setApproaches] = useState(0)
 	const [reptetittions, setReptetittions] = useState(0)
@@ -11,13 +11,22 @@ export const AddNewEx = ({ex, route, addClientEx, navigation}) => {
 	const {client} = route.params
 
 	let state = {
-		name: '',
+		name: 'ex',
 		weight: '',
 		approaches: '',
 		repetitions: '',
 		rest: '',
+		id: '',
 		clientId: client.id
 	}
+
+	const dispatch = useDispatch()
+
+	const add = () => {
+		state.id = Date.now().toString()
+		dispatch(addClientEx(state))
+	}
+
 	return (
 		<View style={styles.wrapper}>
 			<View style={[styles.descriptionContainer, styles.section]}>
@@ -27,9 +36,10 @@ export const AddNewEx = ({ex, route, addClientEx, navigation}) => {
 		              onPress={() => {
 						  <View>
 							  {
-								alert(client.name)
+								alert(client.surname)
 							  }
 						  </View>
+						  state.name = client.name
 					  }}
 		            >
 		              <Text style={styles.buttonText}>Упражнение ▼</Text>
@@ -119,7 +129,7 @@ export const AddNewEx = ({ex, route, addClientEx, navigation}) => {
 			<TouchableOpacity
 				style={styles.save}
 				onPress={()=>{
-					addClientEx(state)
+					add()
 				}}
 			>
 				<Text style={styles.buttonText}>Сохранить</Text>
