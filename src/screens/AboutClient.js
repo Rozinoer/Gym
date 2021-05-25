@@ -19,11 +19,11 @@ export const AboutClient = (({route, editClient, navigation}) => {
     }
 
     const check = (data) => {
-            if(data === '' || data === 0)
-                return 'Не указано'
-            else
+            if(data != '' && data != 0 && data != 'unavable')
                 return data
-        }
+            else
+                return 'Не указано'
+    }
 
     const editSave = () => {
         editClient(state)

@@ -6,9 +6,15 @@ export const Client = ({ client, navigation}) => {
         <Pressable style={styles.client} onPress={() => navigation.navigate('Info', {client: client})}>
 
             <View style={styles.avatar} />
+            <View style={styles.container}>
             <Text style={styles.text}>
-                { client.surname + ' ' + client.name }
+                { client.surname }
             </Text>
+            <Text style={styles.text}>
+                { client.name }
+            </Text>
+            </View>
+            
         </Pressable>
     )
 }
@@ -37,7 +43,7 @@ const styles = StyleSheet.create({
     },
 
     text:{
-        fontSize: 41,
+        fontSize: 32,
         
         marginLeft: 45,
         color: '#fff',

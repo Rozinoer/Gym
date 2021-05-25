@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Button, StyleSheet, View, Modal, Text, Pressable, TextInput} from 'react-native';
 
-export const ClientEx = (({ route, ex, navigation}) => {
-
-    const {client} = route.params
+export const ClientEx = (({ route, ex,navigation}) => {
+    let state = {
+        name: ''
+    }
+    const client = route.params
     const [modalVisible, setModalVisible] = useState(false)
 
     return (
