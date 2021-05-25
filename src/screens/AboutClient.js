@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Button, TouchableOpacity, StyleSheet, View, Text, Modal, TextInput, Pressable } from 'react-native';
-import { color } from 'react-native-reanimated';
+import { TouchableOpacity, StyleSheet, View, Text, Modal, TextInput, Pressable } from 'react-native';
 import { ClientNavbar } from '../components/ClientNavbar'
 
 export const AboutClient = (({route, editClient, navigation}) => {
@@ -59,11 +58,11 @@ export const AboutClient = (({route, editClient, navigation}) => {
                   <Text style={styles.buttonText}>Ex</Text>
             </TouchableOpacity>
             
-            {/* <TouchableOpacity 
+            <TouchableOpacity 
                   onPress={() => navigation.navigate('Ex', {client: client})}
                 >
                   <Text style={styles.buttonText, {color: 'black'}}>Ex</Text>
-            </TouchableOpacity> */}
+            </TouchableOpacity>
 
                 <Modal
                     animationType='slide'

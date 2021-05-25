@@ -1,23 +1,14 @@
 import React, {useState} from 'react'
 import { View, StyleSheet, TouchableOpacity, Text, TextInput, Modal } from 'react-native'
+import { useContext } from 'react/cjs/react.development'
 import SaveEx from '../components/SaveEx'
 
 export const AddNewEx = ({ex, route, addClientEx, navigation}) => {
 
-	let approaches = 0
-	let repetitions = 0
-	let PHapproaches = 'Кол-во подходов'
-	let PHrepetitions = 'Кол-во повторений'
+	const [approaches, setApproaches] = useState(0)
+	const [reptetittions, setReptetittions] = useState(0)
 
 	const {client} = route.params
-
-	const increment = (number) => {
-		return (++number)
-	}
-
-	const decrement = (number) => {
-		return (--number)
-	}
 
 	let state = {
 		name: '',
@@ -58,7 +49,9 @@ export const AddNewEx = ({ex, route, addClientEx, navigation}) => {
 			<View style={[styles.approachesContainer, styles.section]}>
 				<TouchableOpacity
 					style={styles.button}
-					onPress={increment}
+					onPress={() => {
+						setApproaches(approaches - 1)
+					}}
 				>
 					<Text style={styles.buttonText}>-</Text>
 				</TouchableOpacity>
@@ -69,16 +62,14 @@ export const AddNewEx = ({ex, route, addClientEx, navigation}) => {
                     if (text)
                         state.approaches = text
                     }}
-                placeholder={PHapproaches}>
+                placeholder={approaches === 0 ? 'Кол-во подходов' : approaches.toString()}>
+
                 </TextInput>
 
 				<TouchableOpacity
 					style={styles.button}
 					onPress={() => {
-						approaches = increment(approaches)
-						if (approaches > 0) {
-							PHapproaches = approaches.toString()
-						}
+						setApproaches(approaches + 1)
 					}}
 				>
 					<Text style={styles.buttonText}>+</Text>
@@ -87,7 +78,9 @@ export const AddNewEx = ({ex, route, addClientEx, navigation}) => {
 			<View style={[styles.repetitionsContainer, styles.section]}>
 				<TouchableOpacity
 					style={styles.button}
-					onPress={increment}
+					onPress={() => {
+						setReptetittions(reptetittions - 1)
+					}}
 				>
 					<Text style={styles.buttonText}>-</Text>
 				</TouchableOpacity>
@@ -98,12 +91,14 @@ export const AddNewEx = ({ex, route, addClientEx, navigation}) => {
                     if (text)
                         state.repetitions = text
                     }}
-                placeholder={PHrepetitions}>
+                placeholder={reptetittions === 0 ? 'Кол-во повторений' : reptetittions.toString()}>
                 </TextInput>
 
                 <TouchableOpacity
 					style={styles.button}
-					onPress={increment}
+					onPress={() => {
+						setReptetittions(reptetittions + 1)
+					}}
 
 				>
 					<Text style={styles.buttonText}>+</Text>
