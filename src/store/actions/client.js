@@ -1,3 +1,4 @@
+import { DB } from '../../db'
 import { LOAD_CLIENTS, ADD_CLIENT, EDIT_CLIENT, ADD_CLIENT_EX } from "../types"
 
 export const DATA = [
@@ -22,17 +23,21 @@ export const DATA = [
 ]
 
 export const loadClients = () => {
-    return {
-        type: LOAD_CLIENTS,
-        payload: DATA
+    return async dispatch => {
+        const clients = await DB.getClients()
+        dispatch({
+            type: LOAD_CLIENTS,
+            payload: clients
+        })
     }
 }
-export const addClient = (data) => {
-    data.id = Date.now().toString()
-    return {
+export const addClient = (data) => async dispatch => {
+    const id = await DB.createClient(data)
+    data.id = id
+    dispatch ({
         type: ADD_CLIENT,
         payload: data
-    }
+    })
 }
 export const editClient = (data) => {
     return {
