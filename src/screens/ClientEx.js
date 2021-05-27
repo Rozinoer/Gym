@@ -9,7 +9,7 @@ export const ClientEx = (({ route, navigation}) => {
     const dispatch = useDispatch()
 
     useEffect (() => {
-      dispatch(loadEx())
+      dispatch(loadEx(client.id))
     },[dispatch])
 
     const allEx = useSelector(state => state.client.allEx)
@@ -17,8 +17,7 @@ export const ClientEx = (({ route, navigation}) => {
         <View>
             <View style={styles.add}>
             { allEx.map(ex => {
-                if (ex.clientID === client.id)
-                    return <View key={ex.id}><Text>{ex.name + ex.weight + ex.approaches}</Text></View>
+                return <View key={ex.id}><Text>{ex.name + ex.weight + ex.approaches}</Text></View>
             })
             }
             <View style={styles.addEx}>

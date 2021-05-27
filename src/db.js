@@ -15,7 +15,7 @@ export class DB {
             })
             db.transaction(tx => {
                 tx.executeSql(
-                    "create table if not exists ex (id integer primary key not null, name text, weight text, approaches text, repetitions text, rest text clientID text);",
+                    "create table if not exists ex (id integer primary key not null, name text, weight text, approaches text, repetitions text, rest text, clientID integer, foreign key (clientID) references clients (id));",
                     [],
                     resolve(),
                     (_, error) => reject(error)
@@ -24,12 +24,12 @@ export class DB {
         })
     }
 
-    static getEx(){
+    static getEx(id){
         return new Promise((resolve, reject) => {
             db.transaction(tx => {
                 tx.executeSql(
-                    "select * from ex",
-                    [],
+                    "select * from ex where clientID = ?",
+                    [id],
                     (_, result) => resolve(result.rows._array),
                     (_, error) => reject(error)
                 )

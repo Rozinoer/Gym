@@ -11,9 +11,9 @@ export const loadClients = () => {
     }
 }
 
-export const loadEx = () => {
+export const loadEx = (id) => {
     return async dispatch => {
-        const ex = await DB.getEx()
+        const ex = await DB.getEx(id)
         dispatch({
             type: LOAD_EX,
             payload: ex
