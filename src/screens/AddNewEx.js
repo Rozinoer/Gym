@@ -12,18 +12,17 @@ export const AddNewEx = ({route, navigation}) => {
 
 	let state = {
 		name: 'ex',
-		weight: '',
-		approaches: '',
+		weight: '13',
+		approaches: '13',
 		repetitions: '',
 		rest: '',
 		id: '',
-		clientId: client.id
+		clientID: client.id
 	}
 
 	const dispatch = useDispatch()
 
 	const add = () => {
-		state.id = Date.now().toString()
 		dispatch(addClientEx(state))
 	}
 
@@ -31,19 +30,14 @@ export const AddNewEx = ({route, navigation}) => {
 		<View style={styles.wrapper}>
 			<View style={[styles.descriptionContainer, styles.section]}>
 				<View style={[styles.add, styles.addEx]}>
-		            <TouchableOpacity 
-		              style={styles.buttonStyle}
-		              onPress={() => {
-						  <View>
-							  {
-								alert(client.surname)
-							  }
-						  </View>
-						  state.name = client.name
-					  }}
-		            >
-		              <Text style={styles.buttonText}>Упражнение ▼</Text>
-		            </TouchableOpacity>
+					<TextInput 
+                	style={styles.textinput}
+                	onChangeText={(text) => {
+                    if (text)
+                        state.name = text
+                    }}
+                	placeholder='Название'>
+                	</TextInput>
 		          </View>
 			</View>
 			<View style={[styles.weightContainer, styles.section]}>

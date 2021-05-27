@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, StyleSheet, View, Modal, Text, Pressable} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux'
+import { loadEx } from '../store/actions/client';
 
 export const ClientEx = (({ route, navigation}) => {
-    let state = {
-        name: ''
-    }
     const {client} = route.params
     const [modalVisible, setModalVisible] = useState(false)
+    const dispatch = useDispatch()
 
+    useEffect (() => {
+      dispatch(loadEx())
+    },[dispatch])
+
+    const allEx = useSelector(state => state.client.allEx)
     return (
         <View>
             <View style={styles.add}>
-            { client.ex.map(ex => {
-                // return <Pressable
-                // style={styles.regularField}
-                // onPress={()=>{alert('hi')}}
-                // >
-                // <Text style={styles.regularText}>{ ex.name }</Text>
-                // </Pressable>
-                return <View key={ex.id}><Text>{ex.name}</Text></View>
+            { allEx.map(ex => {
+                if (ex.clientID === client.id)
+                    return <View key={ex.id}><Text>{ex.name + ex.weight + ex.approaches}</Text></View>
             })
             }
             <View style={styles.addEx}>

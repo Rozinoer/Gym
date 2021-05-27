@@ -1,26 +1,5 @@
 import { DB } from '../../db'
-import { LOAD_CLIENTS, ADD_CLIENT, EDIT_CLIENT, ADD_CLIENT_EX } from "../types"
-
-export const DATA = [
-    {
-        id: '1',
-        name: 'Сергей',
-        surname: 'Сергеев',
-        ex: []
-    },
-    {
-        id: '2',
-        name: 'Иван',
-        surname: 'Иванов',
-        ex: []
-    },
-    {
-        id: '3',
-        name: 'Петр',
-        surname: 'Петров',
-        ex: []
-    }
-]
+import { LOAD_CLIENTS, ADD_CLIENT, EDIT_CLIENT, ADD_EX, LOAD_EX } from "../types"
 
 export const loadClients = () => {
     return async dispatch => {
@@ -31,6 +10,17 @@ export const loadClients = () => {
         })
     }
 }
+
+export const loadEx = () => {
+    return async dispatch => {
+        const ex = await DB.getEx()
+        dispatch({
+            type: LOAD_EX,
+            payload: ex
+        })
+    }
+}
+
 export const addClient = (data) => async dispatch => {
     const id = await DB.createClient(data)
     data.id = id
@@ -45,9 +35,11 @@ export const editClient = (data) => {
         payload: data
     }
 }
-export const addClientEx = (data) => {
-    return {
-        type: ADD_CLIENT_EX,
+export const addClientEx = (data) => async dispatch => {
+    const id = await DB.createEx(data)
+    data.id = id
+    dispatch ({
+        type: ADD_EX,
         payload: data,
-    }
+    })
 }

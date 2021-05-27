@@ -1,13 +1,16 @@
-import {LOAD_CLIENTS, ADD_CLIENT, EDIT_CLIENT, ADD_CLIENT_EX} from '../types'
+import {LOAD_CLIENTS, ADD_CLIENT, EDIT_CLIENT, ADD_EX, LOAD_EX} from '../types'
 
 const initialState = {
-    allClients: []
+    allClients: [],
+    allEx: []
 }
 
 export const clientReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_CLIENTS:
             return {...state, allClients: action.payload}
+        case LOAD_EX:
+            return {...state, allEx: action.payload}
         case ADD_CLIENT:
             return {...state, allClients: [...state.allClients,
             {
@@ -26,22 +29,12 @@ export const clientReducer = (state = initialState, action) => {
                     return client
                 }
             )}
-        case ADD_CLIENT_EX:
-            return {...state, allClients: [...state.allClients.map(
-                client => {
-                    if (client.id === action.payload.clientId) {
-                        client.ex = [...client.ex, {
-                            name: action.payload.name,
-                            id: action.payload.id,
-                            weight: action.payload.weight,
-                            approaches: action.payload.approaches,
-                            repetitions: action.payload.repetitions,
-                            rest: action.payload.rest
-                        }]
-                    }
-                    return client
-                }
-            )]}
+        case ADD_EX:
+            return {...state, allEx: [...state.allEx, 
+            {
+                ...action.payload
+            }
+        ]}
         default:
             return state
     }
