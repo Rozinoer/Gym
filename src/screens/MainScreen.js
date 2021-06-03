@@ -3,6 +3,8 @@ import { StyleSheet, View, Text, TouchableOpacity, Dimensions, Pressable, Modal,
 import { Client } from '../components/Client'
 import {useDispatch, useSelector} from 'react-redux'
 import {loadClients} from '../store/actions/client'
+import { THEME } from '../theme'
+import {Navbar} from '../components/Navbar'
 
 export const MainScreen = ({ navigation }) => {
     const windowWidth = Dimensions.get('window').width;
@@ -19,6 +21,9 @@ export const MainScreen = ({ navigation }) => {
     const allClients = useSelector(state => state.client.allClients)
     return (
       <View style={styles.wrapper}>
+        {/*<Navbar 
+          title= 'GYM'
+        />*/}
         <View style={styles.clients}>
             { allClients.map(client => {
               return <Client key={client.id} client={client} navigation={navigation}/>
@@ -75,6 +80,8 @@ export const MainScreen = ({ navigation }) => {
 }
 
 
+
+
 const styles = StyleSheet.create({
 
     wrapper: {
@@ -84,8 +91,8 @@ const styles = StyleSheet.create({
       width: '100%',
       height: '100%',
       // backgroundColor: '#FFC040'
-      backgroundColor: '#c4c4c4'
-    },
+      backgroundColor: THEME.BACKGROUND_COLOR_DARK
+      },
     
    
     clients: {
@@ -102,16 +109,12 @@ const styles = StyleSheet.create({
       margin: 10,
       justifyContent: 'space-between',
       width: '100%',
-      
-      
-      
+ 
       width: 120,
       height: 120,
-      borderRadius: 3,
-      backgroundColor: '#292929',
-      // boxShadow: '0 2px 4px #210672'
-      // backgroundColor: '#216Fd1',
-      // boxShadow: '0 2px 4px #210672'
+      borderRadius: 60,
+      backgroundColor: THEME.RED,
+     
       
 
     },
@@ -139,7 +142,7 @@ const styles = StyleSheet.create({
       
       color: 'white',
       fontSize: 92,
-      paddingBottom: 20,
+      paddingBottom: 15,
     },
     button: {
       backgroundColor: 'black',

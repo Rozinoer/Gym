@@ -4,6 +4,7 @@ import AppLoading from 'expo-app-loading'
 import { Provider } from 'react-redux'
 import store from './src/store'
 import { init } from './src/init';
+import { THEME } from './src/theme'
 
 export default function App() {
   const [isReady, setIsReady] = useState(false)

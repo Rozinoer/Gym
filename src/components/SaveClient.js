@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, TouchableOpacity, Text } from 'react-native'
 import { useDispatch } from 'react-redux'
 import { addClient } from '../store/actions/client'
+import { THEME } from '../theme'
 
 export const SaveClient = ({ value, navigation}) => {
     const dispatch = useDispatch()
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 20,
         borderRadius: 3,
-        backgroundColor: '#292929',
+        backgroundColor: THEME.RED,
     },
     buttonText: {
         color: '#fff',

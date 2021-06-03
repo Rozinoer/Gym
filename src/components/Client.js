@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Pressable, StyleSheet, Text, View } from 'react-native';
-
+import {THEME} from '../theme'
 export const Client = ({ client, navigation}) => {
     return(
         <Pressable style={styles.client} onPress={() => navigation.navigate('Info', {client: client})}>
@@ -27,10 +27,11 @@ const styles = StyleSheet.create({
       justifyContent: 'flex-start',
       alignItems: 'center',
       // backgroundColor: '#123EAB',
-      backgroundColor: '#292929',
+      backgroundColor: THEME.SECONDARY_COLOR_DARK,
       borderBottomWidth: 3,
       // borderBottomColor: '#3B14AF',
-      width: '100%',
+      width: '95%',
+      borderRadius: THEME.REGULAR_BORDER_RADIUS
     },
 
     avatar: {
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
       width: 90,
       height: 90,
       backgroundColor: '#ebebeb',
-      borderRadius: 3,
+      borderRadius: 45,
     //   boxShadow: 'inset 0 2px 4px #210672'
     },
 

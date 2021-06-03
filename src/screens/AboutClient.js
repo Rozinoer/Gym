@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { TouchableOpacity, StyleSheet, View, Text, Modal, TextInput, Pressable } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { editClient } from '../store/actions/client';
+import { THEME } from '../theme'
+import { Navbar } from '../components/Navbar'
 
 export const AboutClient = (({route, navigation}) => {
 
@@ -31,9 +33,16 @@ export const AboutClient = (({route, navigation}) => {
         dispatch(editClient(state))
         setModalVisible(!modalVisible)
     }
+    const onPress = () => {
+        navigation.navigate('Main')
+    }
 
     return(
         <View style={styles.wrapper}>
+        <Navbar 
+            onPress= {onPress}
+            title= 'Info'
+        />
             {/*<ClientNavbar style={styles.navbar} client={client} navigation={ navigation } />*/}
             <View style={styles.clientInfo}>
                     <Text style={styles.label}>Имя</Text>
@@ -57,13 +66,14 @@ export const AboutClient = (({route, navigation}) => {
                   style={[styles.button, styles.add, styles.addEx]}
                   onPress={() => navigation.navigate('AddEx', {client: client})}
                 >
-                  <Text style={styles.buttonText}>Ex</Text>
+                  <Text style={styles.buttonText}>NewEx</Text>
             </TouchableOpacity>
             
             <TouchableOpacity 
+                  style={[styles.button, styles.add, styles.showEx]}
                   onPress={() => navigation.navigate('Ex', {client: client})}
                 >
-                  <Text style={styles.buttonText, {color: 'black'}}>Ex</Text>
+                  <Text style={styles.buttonText}>Ex</Text>
             </TouchableOpacity>
 
                 <Modal
@@ -94,9 +104,9 @@ export const AboutClient = (({route, navigation}) => {
                                     state.phone = text
                                 }}
                                 ></TextInput>
-                                <View style={{flexDirection: 'row'}}>
+                                <View style={{marginTop: 15, flexDirection: 'row', justifyContent: 'space-between'}}>
                                     <Pressable
-                                    style={styles.button}
+                                    style={[styles.button, {marginRight: 15}]}
                                     onPress={editSave}
                                     >
                                     <Text style={styles.textButton}>Cохранить</Text>
@@ -125,6 +135,7 @@ const styles = StyleSheet.create({
         
         alignItems: 'center',
         justifyContent: 'flex-start',
+        backgroundColor: THEME.BACKGROUND_COLOR_DARK
         
     },
     
@@ -137,7 +148,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         width: '100%',
         minHeight: 250,
-        backgroundColor: '#fff',
+        backgroundColor: THEME.SECONDARY_COLOR_DARK,
         elevation: 2,
 
 
@@ -145,6 +156,7 @@ const styles = StyleSheet.create({
 
     label: {
         fontSize: 32,
+        color: 'white'
     },
     container: {
         padding: 10,
@@ -167,16 +179,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 20,
         borderRadius: 3,
-        backgroundColor: '#292929',
+        backgroundColor: THEME.RED,
         elevation: 3
     },
 
     buttonText: {
         color: '#fff',
-        fontSize: 32,
+        fontSize: THEME.HEADER_FONT_SIZE,
+        textAlign: 'center'
     },
     centeredView: {
-        justifyContent: "center",
+        justifyContent: "space-between",
         alignItems: "center",
         marginTop: '50%',
         
@@ -220,6 +233,11 @@ const styles = StyleSheet.create({
     addEx: {
 
       left: 20,
+      bottom: 20,
+      margin: 10,
+    },
+    showEx: {
+        right: 20,
       bottom: 20,
       margin: 10,
     },

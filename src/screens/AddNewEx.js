@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import { View, StyleSheet, TouchableOpacity, Text, TextInput, Modal } from 'react-native'
 import { useDispatch } from 'react-redux'
 import { addClientEx } from '../store/actions/client'
+import { THEME } from '../theme'
+import { Navbar } from '../components/Navbar'
 
 export const AddNewEx = ({route, navigation}) => {
 
@@ -25,18 +27,28 @@ export const AddNewEx = ({route, navigation}) => {
 	const add = () => {
 		dispatch(addClientEx(state))
 	}
+	const onPress = () => {
+		navigation.navigate('Info')
+	}
 
 	return (
 		<View style={styles.wrapper}>
+			<Navbar 
+				onPress={onPress}
+				title='Новое Упражнение'
+			/>
 			<View style={[styles.descriptionContainer, styles.section]}>
 				<View style={[styles.add, styles.addEx]}>
 					<TextInput 
-                	style={styles.textinput}
+                	style={[styles.textinput, styles.tittleTextInput]}
                 	onChangeText={(text) => {
                     if (text)
                         state.name = text
                     }}
-                	placeholder='Название'>
+                	placeholder='Название'
+                	placeholderTextColor='grey'
+                	>
+
                 	</TextInput>
 		          </View>
 			</View>
@@ -47,7 +59,9 @@ export const AddNewEx = ({route, navigation}) => {
                     if (text)
                         state.weight = text
                     }}
-                placeholder='Вес'>
+                placeholder='Вес'
+                placeholderTextColor='grey'
+                >
                 </TextInput>
 			</View>
 			<View style={[styles.approachesContainer, styles.section]}>
@@ -66,7 +80,9 @@ export const AddNewEx = ({route, navigation}) => {
                     if (text)
                         state.approaches = text
                     }}
-                placeholder={approaches === 0 ? 'Кол-во подходов' : approaches.toString()}>
+                placeholder={approaches === 0 ? 'Подходы' : approaches.toString()}
+                placeholderTextColor='grey'
+                >
 
                 </TextInput>
 
@@ -95,7 +111,9 @@ export const AddNewEx = ({route, navigation}) => {
                     if (text)
                         state.repetitions = text
                     }}
-                placeholder={reptetittions === 0 ? 'Кол-во повторений' : reptetittions.toString()}>
+                placeholder={reptetittions === 0 ? 'Повторения' : reptetittions.toString()}
+                placeholderTextColor='grey'
+                >
                 </TextInput>
 
                 <TouchableOpacity
@@ -111,12 +129,14 @@ export const AddNewEx = ({route, navigation}) => {
 			</View>
 			<View style={[styles.restContainer, styles.section]}>
 				<TextInput 
-                style={styles.textinput}
+                style={[styles.textinput, styles.restTextInput]}
                 onChangeText={(text) => {
                     if (text)
                         state.rest = text
                     }}
-                placeholder='Время отдыха'>
+                placeholder='Время отдыха'
+                placeholderTextColor='grey'
+                >
                 </TextInput>
 			</View>
 
@@ -140,10 +160,11 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 20,
 		width: '100%',
 		height: '100%',
-		minWidth: 400,
+		minWidth: 300,
 		flex: 1,
 		alignItems: 'center',
-		backgroundColor: '#c4c4c4',
+		justifyContent: 'space-between',
+		backgroundColor: THEME.BACKGROUND_COLOR_DARK,
 	},
 	section: {
 		width: '100%',
@@ -152,6 +173,20 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		marginTop: 45,
 	},
+	descriptionContainer: {
+		width: '90%',
+	},
+	restContainer: {
+
+	},
+
+	tittleTextInput: {
+		width: '90%',
+
+	},
+	restTextInput: {
+		width: '90%',
+	},
 
 	approachesContainer: {
 		
@@ -159,11 +194,14 @@ const styles = StyleSheet.create({
 
 	textinput: {
 		maxWidth: 250,
-		width: '80%',
-		height: 45,
+		width: '40%',
+		flexDirection: 'row',
 		marginHorizontal: 20,
 		textAlign: 'center',
-		fontSize: 32,
+		flexWrap: 'wrap',
+		fontSize: THEME.REGULAR_FONT_SIZE,
+		color: 'grey'
+
 		// border: 'none'
 	},
 	descriptionText: {
@@ -176,7 +214,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 20,
         borderRadius: 3,
-        backgroundColor: '#292929',
+        backgroundColor: THEME.RED,
     },
     buttonText: {
         color: '#fff',
@@ -189,9 +227,10 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		width: 90,
 		height: 90,
-		borderRadius: 3,
-      	backgroundColor: '#292929',
+		borderRadius: 45,
+      	backgroundColor: THEME.RED,
       	// boxShadow: '0 2px 4px #210672'
+      	elevation: 2,
       
 	},
 
@@ -200,7 +239,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		padding: 10,
-		backgroundColor: '#292929',
+		
 	},
 
 	buttonText: {
@@ -221,19 +260,14 @@ const styles = StyleSheet.create({
       
       justifyContent: 'center',
       alignItems: 'center',
-      
-     
-      maxWidth: 250,
-      width: '80%',
       marginHorizontal: 20,
-      marginLeft: 110,
+      
       flexDirection: 'row',
       
       borderRadius: 3,
-      backgroundColor: '#292929',
-      // boxShadow: '0 2px 4px #210672'
-      // backgroundColor: '#216Fd1',
-      // boxShadow: '0 2px 4px #210672'
+
+
+      
       
 
     },
