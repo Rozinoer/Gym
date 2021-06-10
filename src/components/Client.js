@@ -21,17 +21,19 @@ export const Client = ({ client, navigation}) => {
 
 const styles = StyleSheet.create({
     client: {
+        marginTop: 15,
       display: 'flex',
       flexDirection: 'row',
       height: 110,
       justifyContent: 'flex-start',
       alignItems: 'center',
       // backgroundColor: '#123EAB',
-      backgroundColor: THEME.SECONDARY_COLOR_DARK,
-      borderBottomWidth: 3,
+      backgroundColor: '#fff',
+      
       // borderBottomColor: '#3B14AF',
-      width: '95%',
-      borderRadius: THEME.REGULAR_BORDER_RADIUS
+      width: '100%',
+      borderRadius: THEME.REGULAR_BORDER_RADIUS,
+      elevation: 2,
     },
 
     avatar: {
@@ -47,6 +49,6 @@ const styles = StyleSheet.create({
         fontSize: 32,
         
         marginLeft: 45,
-        color: '#fff',
+        color: 'grey',
     }
   });

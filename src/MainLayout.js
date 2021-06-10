@@ -12,7 +12,11 @@ export const MainLayout = () => {
     const Stack = createStackNavigator();
 
     return <NavigationContainer>
-            <Stack.Navigator initialRouteName='Main'>
+            <Stack.Navigator initialRouteName='Main'
+                screenOptions={{
+                    headerShown: false
+                  }}
+            >
                  <Stack.Screen name='Main' >
                     {props => <MainScreen { ...props } />}
                 </Stack.Screen>

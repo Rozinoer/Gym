@@ -5,6 +5,11 @@ import {useDispatch, useSelector} from 'react-redux'
 import {loadClients} from '../store/actions/client'
 import { THEME } from '../theme'
 import {Navbar} from '../components/Navbar'
+import { BottomNavbar } from '../components/BottomNavbar'
+
+import {MaterialCommunityIcons} from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons'; 
+import { Ionicons } from '@expo/vector-icons'; 
 
 export const MainScreen = ({ navigation }) => {
     const windowWidth = Dimensions.get('window').width;
@@ -25,6 +30,7 @@ export const MainScreen = ({ navigation }) => {
           title= 'GYM'
         />*/}
         <View style={styles.clients}>
+          <Text style={[styles.regularText, styles.clientsLabel]}>Клиенты</Text>
             { allClients.map(client => {
               return <Client key={client.id} client={client} navigation={navigation}/>
             })
@@ -35,7 +41,7 @@ export const MainScreen = ({ navigation }) => {
             <TouchableOpacity 
               style={styles.buttonStyle}
               onPress={() => navigation.navigate('Add')}>
-                <Text style={styles.buttonText}>+</Text>
+                <Ionicons name="ios-person-add-outline" size={55} color="white" />
               </TouchableOpacity>
               <TouchableOpacity 
               style={styles.buttonStyle}
@@ -75,6 +81,10 @@ export const MainScreen = ({ navigation }) => {
              </View>
          </View>
      </Modal>
+
+     <BottomNavbar 
+        navigation={navigation}
+     />
     </View> 
     )
 }
@@ -86,34 +96,46 @@ const styles = StyleSheet.create({
 
     wrapper: {
       alignItems: 'center',
+      justifyContent: 'space-between',
       margin: 0,
-      padding: 0,
+      // paddingHorizontal: 15,
       width: '100%',
       height: '100%',
       // backgroundColor: '#FFC040'
-      backgroundColor: THEME.BACKGROUND_COLOR_DARK
+      backgroundColor: THEME.BACKGROUND_COLOR
       },
     
    
     clients: {
       width: '100%',
-      marginTop: 15,
+     
+      padding: 15,
       alignItems: 'center',
+      backgroundColor: THEME.CARROT,
+      borderRadius: THEME.REGULAR_BORDER_RADIUS,
+      elevation: 2
+    },
+    clientsLabel: {
+      marginVertical: 30,
+      fontSize: THEME.HEADER_FONT_SIZE,
+      color: '#fff'
     },
     add: {
 
       position: 'absolute',
-      bottom: 20,
+      bottom: 15,
+      right: 15,
       justifyContent: 'center',
       alignItems: 'center',
-      margin: 10,
+      
       justifyContent: 'space-between',
       width: '100%',
  
       width: 120,
       height: 120,
-      borderRadius: 60,
-      backgroundColor: THEME.RED,
+      borderRadius: THEME.REGULAR_BORDER_RADIUS,
+      backgroundColor: THEME.CARROT,
+      elevation: 2,
      
       
 

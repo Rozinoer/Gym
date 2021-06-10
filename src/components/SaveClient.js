@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { addClient } from '../store/actions/client'
 import { THEME } from '../theme'
 
-export const SaveClient = ({ value, navigation}) => {
+export const SaveClient = (props, {value, navigation}) => {
     const dispatch = useDispatch()
     
     const presHandler = () => {
@@ -18,7 +18,7 @@ export const SaveClient = ({ value, navigation}) => {
             onPress={presHandler}
         >
 
-            <Text style={styles.buttonText}>Сохранить</Text>
+            <Text style={styles.buttonText}>{props.text}</Text>
         </TouchableOpacity>
     )
 }
@@ -28,8 +28,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
-        borderRadius: 3,
-        backgroundColor: THEME.RED,
+        borderRadius: THEME.REGULAR_BORDER_RADIUS,
+        backgroundColor: THEME.CARROT,
+        elevation: 2,
     },
     buttonText: {
         color: '#fff',

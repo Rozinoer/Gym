@@ -3,7 +3,8 @@ import { TouchableOpacity, StyleSheet, View, Text, Modal, TextInput, Pressable }
 import { useDispatch } from 'react-redux';
 import { editClient } from '../store/actions/client';
 import { THEME } from '../theme'
-import { Navbar } from '../components/Navbar'
+import { BottomNavbar } from '../components/BottomNavbar'
+
 
 export const AboutClient = (({route, navigation}) => {
 
@@ -21,11 +22,12 @@ export const AboutClient = (({route, navigation}) => {
         phone: client.phone
     }
 
-    const check = (data) => {
+    const check = (data, placeholder) => {
+
             if(data != '' && data != 0 && data != 'unavable')
                 return data
             else
-                return 'Не указано'
+                return placeholder
     }
     const dispatch = useDispatch()
 
@@ -39,26 +41,26 @@ export const AboutClient = (({route, navigation}) => {
 
     return(
         <View style={styles.wrapper}>
-        <Navbar 
+        {/*<Navbar 
             onPress= {onPress}
             title= 'Info'
-        />
-            {/*<ClientNavbar style={styles.navbar} client={client} navigation={ navigation } />*/}
+        />*/}
+            
             <View style={styles.clientInfo}>
                     <Text style={styles.label}>Имя</Text>
-                    <Text style={styles.mainText}>{check(state.name)}</Text>
+                    <Text style={styles.mainText}>{check(state.name, 'Не указано')}</Text>
 
                     <Text style={styles.label}>Фамилия</Text>
-                    <Text style={styles.mainText}>{check(state.surname)}</Text>
+                    <Text style={styles.mainText}>{check(state.surname, 'Не указано')}</Text>
 
                     <Text style={styles.label}>Телефон</Text>
-                    <Text style={styles.mainText}>{check(state.phone)}</Text>
+                    <Text style={styles.mainText}>{check(state.phone, 'Не указан')}</Text>
                 
                 <TouchableOpacity 
-                  style={[styles.button, styles.redact]}
+                  style={[styles.button, styles.redact, {backgroundColor: 'white'}]}
                   onPress={() => {setModalVisible(!modalVisible)}}
                 >
-                  <Text style={styles.buttonText}>Редактировать</Text>
+                  <Text style={[styles.buttonText, {color: 'grey'}]}>Редактировать</Text>
                 </TouchableOpacity>
             </View>
             
@@ -85,21 +87,21 @@ export const AboutClient = (({route, navigation}) => {
                             <View style={styles.modalView}>
                                 <TextInput
                                 style={styles.input}
-                                placeholder={state.name}
+                                placeholder={check(state.name, "Имя")}
                                 onChangeText={(text)=>{
                                     state.name = text
                                 }}
                                 ></TextInput>
                                 <TextInput
                                 style={styles.input}
-                                placeholder={state.surname}
+                                placeholder={check(state.surname, "Фамилия")}
                                 onChangeText={(text)=>{
                                     state.surname = text
                                 }}
                                 ></TextInput>
                                 <TextInput
                                 style={styles.input}
-                                placeholder={state.phone}
+                                placeholder={check(state.phone, "Телефон")}
                                 onChangeText={(text)=>{
                                     state.phone = text
                                 }}
@@ -121,6 +123,9 @@ export const AboutClient = (({route, navigation}) => {
                             </View>
                         </View>
                     </Modal>
+                    <BottomNavbar 
+                        navigateHome = {()=>navigation.navigate('Main')}
+                    />
         </View>
     )
 })
@@ -134,8 +139,8 @@ const styles = StyleSheet.create({
         height: '100%',
         
         alignItems: 'center',
-        justifyContent: 'flex-start',
-        backgroundColor: THEME.BACKGROUND_COLOR_DARK
+        justifyContent: 'space-between',
+        backgroundColor: THEME.BACKGROUND_COLOR
         
     },
     
@@ -148,7 +153,9 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         width: '100%',
         minHeight: 250,
-        backgroundColor: THEME.SECONDARY_COLOR_DARK,
+        backgroundColor: THEME.CARROT,
+        borderRadius: THEME.REGULAR_BORDER_RADIUS,
+
         elevation: 2,
 
 
@@ -164,7 +171,7 @@ const styles = StyleSheet.create({
     mainText: {
         fontSize: 36,
         marginBottom: 20,
-        color: 'grey',
+        color: THEME.SILVER,
     },
     text: {
         fontSize: 20,
@@ -179,12 +186,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 20,
         borderRadius: 3,
-        backgroundColor: THEME.RED,
+        backgroundColor: THEME.CARROT,
+        borderRadius: THEME.REGULAR_BORDER_RADIUS,
         elevation: 3
     },
 
     buttonText: {
-        color: '#fff',
+        color: 'white',
         fontSize: THEME.HEADER_FONT_SIZE,
         textAlign: 'center'
     },
@@ -232,14 +240,14 @@ const styles = StyleSheet.create({
     },
     addEx: {
 
-      left: 20,
-      bottom: 20,
-      margin: 10,
+      right: 20,
+      bottom: 160,
+      
     },
     showEx: {
         right: 20,
       bottom: 20,
-      margin: 10,
+     
     },
 
     redact: {

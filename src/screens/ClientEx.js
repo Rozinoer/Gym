@@ -22,10 +22,10 @@ export const ClientEx = (({ route, navigation}) => {
     return (
         
             <View style={styles.wrapper}>
-            <Navbar 
+           {/* <Navbar 
                 onPress= {onPress}
                 title= 'Упражнения'
-            />
+            />*/}
                 <View style={styles.exercises}>
                 { allEx.map(ex => {
                     return (
@@ -113,11 +113,14 @@ const styles=StyleSheet.create({
         justifyContent: 'flex-start',
         width: '100%',
         height: '100%',
-        backgroundColor: THEME.BACKGROUND_COLOR_DARK
+        backgroundColor: THEME.BACKGROUND_COLOR
     },
     exercises: {
+
         width: '100%',
         padding: 15,
+        backgroundColor: THEME.CARROT,
+        borderRadius: THEME.REGULAR_BORDER_RADIUS
     },
     button: {
         padding: 0,

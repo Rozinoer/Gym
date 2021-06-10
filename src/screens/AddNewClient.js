@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { SaveClient } from '../components/SaveClient'
 import { THEME } from '../theme'
-import { Navbar } from '../components/Navbar'
+import { BottomNavbar } from '../components/BottomNavbar'
 
 export const AddNewClient = ({navigation}) => {
     let state = {
@@ -20,23 +20,24 @@ export const AddNewClient = ({navigation}) => {
 
     return (
     <View style={styles.wrapper}>
-        <Navbar 
+        {/*<Navbar 
             title='Add'
             onPress= {pressHandler}
-        />
-
+        />*/}
+        
      
             <View style={styles.container}>
-        
-            <View>
+
+            <View style={styles.mainInfo}>
                 <TextInput 
                 onChangeText={(text) => {
                     if (text)
                         state.surname = text
                 }}
                 placeholder='surname'
-                placeholderTextColor='grey' 
-                style={styles.textinput}>
+                placeholderTextColor={THEME.SILVER} 
+                style={[styles.textinput, {color: 'white'}]}
+                >
                 </TextInput>
 
                 <TextInput 
@@ -46,11 +47,14 @@ export const AddNewClient = ({navigation}) => {
                             state.name = text
                         }}
                     placeholder='name'
-                    placeholderTextColor='grey'
+                    placeholderTextColor={THEME.SILVER} 
+                    style={[styles.textinput, {color: 'white'}]}
                     >
                     </TextInput>
                     
-                </View>
+            </View>
+        
+            
                 <View style={{paddingTop:100}}>
                     <View style={styles.parametrs}>
                         <Text style={styles.text}>Height</Text>
@@ -96,10 +100,14 @@ export const AddNewClient = ({navigation}) => {
                 </View>
                 <Text style={styles.text}>{state.name}</Text>
                 <View style={styles.buttonContainer}>
-                    <SaveClient style={styles.button} value={ state } navigation={navigation} />
+                    <SaveClient style={styles.button} text='Сохранить' value={ state } navigation={navigation} />
                 </View>
                 
             </View>
+            
+
+            <BottomNavbar />
+
         </View>
         
     )
@@ -109,15 +117,26 @@ const styles = StyleSheet.create({
     wrapper: {
         height: '100%',
         width: '100%',
+        justifyContent: 'space-between'
     },
     container: {
-
         justifyContent: 'space-between',
-        height: '100%',
+        height: '90%',
         width: '100%',
         padding: 10,
-        backgroundColor: THEME.BACKGROUND_COLOR_DARK,
+        backgroundColor: THEME.BACKGROUND_COLOR,
+        borderRadius: THEME.REGULAR_BORDER_RADIUS,
         color: 'white',
+        elevation: 2
+
+    },
+    mainInfo: {
+        margin: -15,
+        padding: 15,
+        paddingTop: 45,
+        backgroundColor: THEME.CARROT,
+        borderRadius: THEME.REGULAR_BORDER_RADIUS,
+        elevation: 2
 
     },
     input: {
@@ -126,13 +145,14 @@ const styles = StyleSheet.create({
         borderColor: '#fff',
         width: 200,
         fontSize: 21,
-        color: '#fff'
+        color: 'grey'
     },
     buttonContainer: {
         padding: 0,
+        marginBottom: 15,
 
-        alignSelf: 'flex-end',
-        bottom: 20,
+        // alignSelf: 'flex-end',
+        
         width: '100%',
         alignItems: 'center'
     },
@@ -148,12 +168,12 @@ const styles = StyleSheet.create({
     textinput: {
         fontSize: 36,
         marginBottom: 5,
-        borderBottomWidth: 1,
-        borderColor: '#fff',
-        color: '#fff'
+        // borderBottomWidth: 1,
+        // borderColor: '#fff',
+        color: 'grey'
     },
     text: {
         fontSize: 20,
-        color: '#fff'
+        color: 'grey'
     }
 })
