@@ -13,9 +13,9 @@ export const AddNewEx = ({route, navigation}) => {
 	const {client} = route.params
 
 	let state = {
-		name: 'ex',
-		weight: '13',
-		approaches: '13',
+		name: '',
+		weight: '',
+		approaches: '',
 		repetitions: '',
 		rest: '',
 		id: '',
@@ -26,9 +26,6 @@ export const AddNewEx = ({route, navigation}) => {
 
 	const add = () => {
 		dispatch(addClientEx(state))
-		navigation.navigate('Info')
-	}
-	const onPress = () => {
 		navigation.navigate('Info')
 	}
 
@@ -46,7 +43,6 @@ export const AddNewEx = ({route, navigation}) => {
 	                	placeholder='Название'
 	                	placeholderTextColor='grey'
 	                	>
-
 	                	</TextInput>
 			          </View>
 				</View>
@@ -149,11 +145,7 @@ export const AddNewEx = ({route, navigation}) => {
 				</TouchableOpacity>
 
 			</View>
-			<BottomNavbar />
-			
-
-			{/*<SaveEx onSubmit={  } value={ state } navigation={navigation}/>*/}
-			
+			<BottomNavbar navigation ={navigation}/>
 		</View>
 	)
 }

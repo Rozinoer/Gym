@@ -106,7 +106,7 @@ export const AddNewClient = ({navigation}) => {
             </View>
             
 
-            <BottomNavbar />
+            <BottomNavbar navigation ={navigation}/>
 
         </View>
         

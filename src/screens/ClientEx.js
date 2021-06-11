@@ -65,9 +65,9 @@ export const ClientEx = (({ route, navigation}) => {
                 }
                 <View style={styles.addEx}>
                     <Button 
-                        title='Добавить упражнение' 
+                        title='Назад' 
                         style={styles.button}
-                        onPress={() => {setModalVisible(!modalVisible)}}></Button>
+                        onPress={() => {navigation.navigate('Info')}}></Button>
                 </View>
                 </View>
                 <View>

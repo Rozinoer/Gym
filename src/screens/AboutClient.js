@@ -136,10 +136,7 @@ export const AboutClient = (({route, navigation}) => {
                             </View>
                         </View>
                     </Modal>
-                    <BottomNavbar 
-                        // navigateHome = {()=>navigation.navigate('Main')}
-                        onPress={onPress}
-                    />
+                    <BottomNavbar navigation = {navigation}/>
         </View>
     )
 })

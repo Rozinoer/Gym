@@ -10,7 +10,7 @@ export const BottomNavbar = ({navigation}) => {
             
         <TouchableOpacity
             style={styles.button}
-            onPress={() => navigation.goBack()}
+            onPress={() => navigation.navigate('Main')}
         >
             <AntDesign name="home" size={32} color="black" />
         </TouchableOpacity>

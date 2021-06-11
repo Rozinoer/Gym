@@ -85,10 +85,7 @@ export const MainScreen = ({ navigation }) => {
              </View>
          </View>
      </Modal>
-
-     <BottomNavbar 
-        
-     />
+     <BottomNavbar navigation ={navigation}/>
     </View> 
     )
 }
