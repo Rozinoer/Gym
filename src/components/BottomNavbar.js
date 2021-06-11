@@ -4,18 +4,18 @@ import { THEME } from '../theme'
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons'; 
 
-export const BottomNavbar = (props) => {
+export const BottomNavbar = ({navigation}) => {
     return (
         <View style={styles.navbar}>
             
         <TouchableOpacity
             style={styles.button}
-            
+            onPress={() => navigation.goBack()}
         >
             <AntDesign name="home" size={32} color="black" />
         </TouchableOpacity>
         
-        <TouchableOpacity
+       {/* <TouchableOpacity
             style={styles.button}
             // onPress={props.navigate}
         >
@@ -27,7 +27,7 @@ export const BottomNavbar = (props) => {
             // onPress={props.navigate}
         >
             
-        </TouchableOpacity>
+        </TouchableOpacity>*/}
 
 
             

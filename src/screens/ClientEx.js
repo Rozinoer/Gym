@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, StyleSheet, View, Modal, Text, Pressable, TouchableOpacity} from 'react-native';
+import { Button, StyleSheet, View, Modal, Text, Pressable, TouchableOpacity, Dimensions } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux'
 import { loadEx } from '../store/actions/client';
 import { THEME } from '../theme'
@@ -112,7 +112,7 @@ const styles=StyleSheet.create({
     wrapper: {
         justifyContent: 'flex-start',
         width: '100%',
-        height: '100%',
+        height: Dimensions.get('window').height + 15,
         backgroundColor: THEME.BACKGROUND_COLOR
     },
     exercises: {

@@ -7,6 +7,7 @@ import { AboutClient } from './screens/AboutClient';
 import { ClientProgress } from './screens/ClientProgress';
 import { ClientEx } from './screens/ClientEx';
 import { AddNewEx } from './screens/AddNewEx'
+import { BottomNavbar } from './components/BottomNavbar'
 
 export const MainLayout = () => {
     const Stack = createStackNavigator();

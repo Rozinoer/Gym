@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { TouchableOpacity, StyleSheet, View, Text, Modal, TextInput, Pressable } from 'react-native';
+import { TouchableOpacity, StyleSheet, View, Text, Modal, TextInput, Pressable, Dimensions } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { editClient } from '../store/actions/client';
 import { THEME } from '../theme'
 import { BottomNavbar } from '../components/BottomNavbar'
+
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { Entypo, AntDesign } from '@expo/vector-icons'; 
 
 
 export const AboutClient = (({route, navigation}) => {
@@ -68,14 +71,24 @@ export const AboutClient = (({route, navigation}) => {
                   style={[styles.button, styles.add, styles.addEx]}
                   onPress={() => navigation.navigate('AddEx', {client: client})}
                 >
-                  <Text style={styles.buttonText}>NewEx</Text>
+                    <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+                        <MaterialCommunityIcons name="dumbbell" size={50} color="white" />
+                        <AntDesign name="plus" size={35} color="white" />
+                    </View>
+                 
             </TouchableOpacity>
             
             <TouchableOpacity 
                   style={[styles.button, styles.add, styles.showEx]}
                   onPress={() => navigation.navigate('Ex', {client: client})}
                 >
-                  <Text style={styles.buttonText}>Ex</Text>
+                  
+                <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+                    <MaterialCommunityIcons name="dumbbell" size={50} color="white" />
+                    <Entypo name="list" size={35} color="white" />
+                </View>
+                      
+                  
             </TouchableOpacity>
 
                 <Modal
@@ -124,7 +137,8 @@ export const AboutClient = (({route, navigation}) => {
                         </View>
                     </Modal>
                     <BottomNavbar 
-                        navigateHome = {()=>navigation.navigate('Main')}
+                        // navigateHome = {()=>navigation.navigate('Main')}
+                        onPress={onPress}
                     />
         </View>
     )
@@ -136,7 +150,7 @@ const styles = StyleSheet.create({
         padding: 0,
         
         width: '100%',
-        height: '100%',
+        height: Dimensions.get('window').height + 15,
         
         alignItems: 'center',
         justifyContent: 'space-between',

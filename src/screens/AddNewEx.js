@@ -26,6 +26,7 @@ export const AddNewEx = ({route, navigation}) => {
 
 	const add = () => {
 		dispatch(addClientEx(state))
+		navigation.navigate('Info')
 	}
 	const onPress = () => {
 		navigation.navigate('Info')
@@ -141,6 +142,7 @@ export const AddNewEx = ({route, navigation}) => {
 					style={styles.save}
 					onPress={()=>{
 						add()
+
 					}}
 				>
 					<Text style={styles.buttonText}>Сохранить</Text>
@@ -160,9 +162,9 @@ const styles = StyleSheet.create({
 	wrapper: {
 		
 		width: '100%',
-		height: '100%',
+		height: Dimensions.get('window').height + 15,
 		minWidth: 300,
-		flex: 1,
+		
 		alignItems: 'center',
 		justifyContent: 'space-between',
 		backgroundColor: THEME.BACKGROUND_COLOR,

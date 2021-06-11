@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Dimensions } from 'react-native';
 import { SaveClient } from '../components/SaveClient'
 import { THEME } from '../theme'
 import { BottomNavbar } from '../components/BottomNavbar'
@@ -100,7 +100,7 @@ export const AddNewClient = ({navigation}) => {
                 </View>
                 <Text style={styles.text}>{state.name}</Text>
                 <View style={styles.buttonContainer}>
-                    <SaveClient style={styles.button} text='Сохранить' value={ state } navigation={navigation} />
+                    <SaveClient style={styles.button} value={ state } navigation={navigation} />
                 </View>
                 
             </View>
@@ -115,9 +115,11 @@ export const AddNewClient = ({navigation}) => {
 
 const styles = StyleSheet.create({
     wrapper: {
-        height: '100%',
+        height: Dimensions.get('window').height + 15,
+
         width: '100%',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+
     },
     container: {
         justifyContent: 'space-between',

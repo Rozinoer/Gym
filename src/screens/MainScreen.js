@@ -11,6 +11,7 @@ import {MaterialCommunityIcons} from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons'; 
 import { Ionicons } from '@expo/vector-icons'; 
 
+
 export const MainScreen = ({ navigation }) => {
     const windowWidth = Dimensions.get('window').width;
     const windowHeight = Dimensions.get('window').height;
@@ -30,7 +31,10 @@ export const MainScreen = ({ navigation }) => {
           title= 'GYM'
         />*/}
         <View style={styles.clients}>
-          <Text style={[styles.regularText, styles.clientsLabel]}>Клиенты</Text>
+          <View style={styles.clientsLabel}>
+            <Text style={styles.clientsLabelText}>Клиенты</Text>
+          </View>
+          
             { allClients.map(client => {
               return <Client key={client.id} client={client} navigation={navigation}/>
             })
@@ -83,7 +87,7 @@ export const MainScreen = ({ navigation }) => {
      </Modal>
 
      <BottomNavbar 
-        navigation={navigation}
+        
      />
     </View> 
     )
@@ -116,9 +120,23 @@ const styles = StyleSheet.create({
       elevation: 2
     },
     clientsLabel: {
-      marginVertical: 30,
+      marginTop: -15,
+      
+      marginBottom: 15, 
+      paddingVertical: 15,
+      paddingTop: 35,
+      width: Dimensions.get('window').width,
+      justifyContent: 'center',
+      alignItems: 'center',
       fontSize: THEME.HEADER_FONT_SIZE,
-      color: '#fff'
+      backgroundColor: THEME.CARROT,
+      color: 'grey',
+      // borderRadius: THEME.REGULAR_BORDER_RADIUS,
+      elevation: 4,
+    },
+    clientsLabelText: {
+      color: 'white',
+      fontSize: THEME.HEADER_FONT_SIZE
     },
     add: {
 
